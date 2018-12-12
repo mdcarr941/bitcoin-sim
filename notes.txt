@@ -1,0 +1,16 @@
+Target threshold from nBits.
+Transaction hashing.
+Mining.
+Basic node functions: tx validation and acceptance, coordinating with miner.
+Implement the scripting language.
+Merkle root calculation.
+Block chain validation.
+
+scriptPubKey: OP_DUP OP_HASH160 <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG
+scriptSig: <sig> <pubKey>
+
+URL to download block in hex:
+https://blockchain.info/block/_block_hash_?format=hex
+
+To verify a transaction input the following are required:
+
