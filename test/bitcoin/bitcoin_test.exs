@@ -1,3 +1,15 @@
+alias Bitcoin.Serialize
+alias Bitcoin.TxOut
+alias Bitcoin.OutPoint
+alias Bitcoin.TxIn
+alias Bitcoin.CoinBaseIn
+alias Bitcoin.Transaction
+alias Bitcoin.BlockHeader
+alias Bitcoin.Block
+alias Bitcoin.Crypto
+alias Bitcoin.Script
+alias Bitcoin.Network
+
 defmodule Bitcoin.Tests.General do
   use ExUnit.Case, async: true
   import Bitcoin.Tests.Helpers

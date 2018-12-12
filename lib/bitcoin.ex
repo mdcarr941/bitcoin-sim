@@ -1,6 +1,25 @@
+alias Bitcoin.Dummy
+alias Bitcoin.Serialize
+alias Bitcoin.TxOut
+alias Bitcoin.OutPoint
+alias Bitcoin.TxInput
+alias Bitcoin.TxIn
+alias Bitcoin.CoinBaseIn
+alias Bitcoin.Transaction
+alias Bitcoin.BlockHeader
+alias Bitcoin.Block
+alias Bitcoin.Crypto
+alias Bitcoin.ScriptContext
+alias Bitcoin.Script
+alias Bitcoin.Mining
+alias Bitcoin.BtcNodeState
+alias Bitcoin.BtcNode
+alias Bitcoin.NetworkState
+alias Bitcoin.Network
+
 defmodule Bitcoin.Dummy do
   @moduledoc """
-  This module exists so I can call `Bitcoin.Dummy.invert_string` at compile time
+  This module exists so I can call `Dummy.invert_string` at compile time
   from `Serialize` in order to define a module attribute.
   """
 
@@ -13,7 +32,7 @@ defmodule Bitcoin.Dummy do
   end
 end
 
-defmodule Serialize do
+defmodule Bitcoin.Serialize do
   use Bitwise
 
   @type byte_list :: [non_neg_integer]
@@ -135,7 +154,7 @@ defmodule Serialize do
     Enum.reduce(zeros, str, fn(_, str) -> pad_char <> str end)
   end
 
-  @base58_code_inv Bitcoin.Dummy.invert_string(@base58_code)
+  @base58_code_inv Dummy.invert_string(@base58_code)
 
   @spec base58dec(String.t, non_neg_integer) :: binary
   def base58dec(str, num_bytes) do
@@ -208,11 +227,13 @@ defmodule Serialize do
 
   @doc "Inspect `val` after mapping it with `Serialize.to_hex` and give it label `key`."
   def inspect_hex({key, val}) do
-    IO.inspect(Serialize.to_hex(val), label: key, limit: :infinity)
+    IO.inspect(to_hex(val), label: key, limit: :infinity)
   end
 end
 
-defmodule TxOut do
+defmodule Bitcoin.TxOut do
+  alias Bitcoin.TxOut, as: TxOut
+
   defstruct value: nil, pk_script: nil
   @type t :: %TxOut{
     value: non_neg_integer,
@@ -267,7 +288,7 @@ defmodule TxOut do
   end
 end
 
-defmodule OutPoint do
+defmodule Bitcoin.OutPoint do
   defstruct hash: nil, index: nil
 
   @type t :: %OutPoint{
@@ -306,12 +327,12 @@ defmodule OutPoint do
   end
 end
 
-defmodule TxInput do
+defmodule Bitcoin.TxInput do
   @callback to_pairs(map) :: Serialize.binary_pairs_t
   @callback deserialize(bin :: binary) :: {map, binary}
 end
 
-defmodule TxIn do
+defmodule Bitcoin.TxIn do
   defstruct prev_out: nil, sig_script: [], sequence: 0xffffffff
   @type t :: %TxIn{
     prev_out: OutPoint.t,
@@ -359,7 +380,7 @@ defmodule TxIn do
   end
 end
 
-defmodule CoinBaseIn do
+defmodule Bitcoin.CoinBaseIn do
   defstruct hash: <<0::256>>, index: 0xffffffff, height: nil, coinbase_script: nil, sequence: 0
   @type t :: %CoinBaseIn{
     hash: Crypto.hash_t,
@@ -433,7 +454,7 @@ defmodule CoinBaseIn do
   end
 end
 
-defmodule Transaction do
+defmodule Bitcoin.Transaction do
   defstruct version: 1, tx_in: [], tx_out: [], lock_time: 0, coinbase?: false
   @type t :: %Transaction{
     version: non_neg_integer,
@@ -597,7 +618,7 @@ defmodule Transaction do
   def hash(trans), do: serialize(trans) |> Crypto.double_hash
 end
 
-defmodule BlockHeader do
+defmodule Bitcoin.BlockHeader do
   @moduledoc "Code for working with `%BlockHeader` structs."
   #@n_bits 0x1d00ffff # difficulty 1
   @n_bits 0x1f00ffff
@@ -676,7 +697,7 @@ defmodule BlockHeader do
   def hash(header), do: serialize(header) |> Crypto.double_hash
 end
 
-defmodule Block do
+defmodule Bitcoin.Block do
   defstruct header: %BlockHeader{}, transactions: []
   @type t :: %Block{
     header: BlockHeader.t,
@@ -791,7 +812,7 @@ defmodule Block do
   end
 end
 
-defmodule Crypto do
+defmodule Bitcoin.Crypto do
   @curve :secp256k1
   @hash :sha256
   @type hash_t :: <<_::256>>
@@ -898,7 +919,7 @@ defmodule Crypto do
   end
 end
 
-defmodule ScriptContext do
+defmodule Bitcoin.ScriptContext do
   defstruct curr_trans: nil, prev_pk_script: [], in_index: nil
   @type t :: %ScriptContext{
     curr_trans: Transaction.t,
@@ -907,7 +928,7 @@ defmodule ScriptContext do
   }
 end
 
-defmodule Script do
+defmodule Bitcoin.Script do
   @type t :: [atom | {atom, binary}]
 
   @opcodes %{
@@ -1056,7 +1077,7 @@ defmodule Script do
   end
 end
 
-defmodule Mining do
+defmodule Bitcoin.Mining do
   use Bitwise
 
   @max_nonce (1 <<< 32) - 1
@@ -1093,7 +1114,7 @@ defmodule Mining do
   end
 end
 
-defmodule BtcNodeState do
+defmodule Bitcoin.BtcNodeState do
   @genesis_block Block.genesis_block()
 
   @moduledoc "The state of a node in the BTC network."
@@ -1120,7 +1141,7 @@ defmodule BtcNodeState do
   end
 end
 
-defmodule BtcNode do
+defmodule Bitcoin.BtcNode do
   @moduledoc "A full node in the network. Nodes also mine blocks."
   use GenServer
   use Bitwise
@@ -1400,7 +1421,7 @@ defmodule BtcNode do
   def stop_mining(pid), do: GenServer.cast(pid, {:stop_mining})
 end
 
-defmodule NetworkState do
+defmodule Bitcoin.NetworkState do
   @type node_states :: %{pid => BtcNodeState.t}
   @type callback :: (NetworkState.t -> {:send, term} | {:sendonce, term} | :nosend | :unregister)
   @type callback_map :: %{atom => callback}
@@ -1412,7 +1433,7 @@ defmodule NetworkState do
   }
 end
 
-defmodule Network do
+defmodule Bitcoin.Network do
   use GenServer
 
   @spec start_mining(NetworkState.t) :: NetworkState.t

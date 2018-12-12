@@ -3,6 +3,13 @@ ExUnit.start()
 defmodule Bitcoin.Tests.Helpers do
   @moduledoc "Functions to help with testing."
   import ExUnit.Assertions
+  alias Bitcoin.Serialize
+  alias Bitcoin.TxOut
+  alias Bitcoin.OutPoint
+  alias Bitcoin.TxIn
+  alias Bitcoin.Transaction
+  alias Bitcoin.Crypto
+  alias Bitcoin.Script
 
   def pub_priv() do
     int = 0xf19c523315891e6e15ae0608a35eec2e00ebd6d1984cf167f46336dabd9b2de4
