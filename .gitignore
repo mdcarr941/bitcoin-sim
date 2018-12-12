@@ -44,3 +44,4 @@ npm-debug.log
 mix.lock
 blk*.txt
 blk551777.bin
+.elixir_ls/

@@ -6,19 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Bitcoin · Phoenix Framework</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
-    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+    <link rel="shortcut icon" type="image/png" href="<%= Routes.static_path(@conn, "/images/BC_Logo.png") %>"/>
   </head>
   <body>
     <header>
       <section class="container">
-        <nav role="navigation">
+        <!--nav role="navigation">
           <ul>
             <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
           </ul>
-        </nav>
-        <a href="http://phoenixframework.org/" class="phx-logo">
+        </nav-->
+        <div>
+          <img src="<%= Routes.static_path(@conn, "/images/BC_Logotype.png") %>" width="306px" height="64px" alt="Bitcoin"/>
+          <span style="font-size:350%;">Sim</span>
+        </div>
+        <!--a href="http://phoenixframework.org/" class="phx-logo">
           <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
-        </a>
+        </a-->
       </section>
     </header>
     <main role="main" class="container">
@@ -27,4 +31,5 @@
       <%= render @view_module, @view_template, assigns %>
     </main>
   </body>
+  <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
 </html>

@@ -16,3 +16,6 @@ import "phoenix_html"
 // Local files can be imported directly using relative paths, for example:
 // import socket from "./socket"
 import Chart from '../node_modules/chart.js'
+
+// Import the socket object from ./socket.js
+import socket from './socket.js'

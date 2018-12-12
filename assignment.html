@@ -1,0 +1,1797 @@
+
+<!DOCTYPE html>
+<html class="scripts-not-loaded" dir="ltr"   lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Project 4.1</title>
+  <!--[if lte IE 9]> <meta http-equiv=refresh content="0; URL=/ie-9-is-not-supported.html" /> <![endif]-->
+  
+  <link rel="preload" href="https://du11hjcvx0uqb.cloudfront.net/dist/fonts/lato/latin/LatoLatin-Regular-3cd3657802.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="shortcut icon" type="image/x-icon" href="https://du11hjcvx0uqb.cloudfront.net/dist/images/favicon-e10d657a73.ico" />
+  <link rel="apple-touch-icon" href="https://du11hjcvx0uqb.cloudfront.net/dist/images/apple-touch-icon-585e5d997d.png" />
+  
+  <link rel="stylesheet" media="all" href="https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/44f1e4c93f879f133b9b74c557b56961/variables-750d72b9d3e5d522f965bf904110c132.css" />
+  <link rel="stylesheet" media="all" href="https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/new_styles_normal_contrast/bundles/common-b1026d0532.css" />
+  <script>
+//<![CDATA[
+
+!function(){
+  function get(u){document.write('<scr'+'ipt src="'+ u +'"></sc'+'ript>')}
+  var o,s,v;
+  if (!(window.Promise && Object.assign && Object.values && [].find && [].includes && (o={},s=Symbol(),v={},o[s]=v,o[s]===v) && (function f(){}).bind().name==='bound f')) {
+    get("https://du11hjcvx0uqb.cloudfront.net/dist/ie11-polyfill-cecff725c1.js");
+  }
+  window.fetch || get("https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js");
+}();
+      
+//]]>
+</script>
+  <script src="https://du11hjcvx0uqb.cloudfront.net/dist/lato-fontfaceobserver-ed903d58c4.js" async="async"></script>
+  
+  <meta name="apple-itunes-app" content="app-id=480883488" />
+<link rel="manifest" href="/web-app-manifest/manifest.json" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#dd661e">
+  <link rel="stylesheet" media="all" href="https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/new_styles_normal_contrast/bundles/assignments-b181b80815.css" />
+<link rel="stylesheet" media="all" href="https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/new_styles_normal_contrast/bundles/tinymce-cfde159ef1.css" />
+<link rel="stylesheet" media="all" href="https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/new_styles_normal_contrast/bundles/learning_outcomes-f40ec34c4b.css" />
+  
+  
+  <script>
+    function _earlyClick(e){
+      var c = e.target
+      while (c && c.ownerDocument) {
+        if (c.getAttribute('href') == '#' || c.getAttribute('data-method')) {
+          e.preventDefault()
+          (_earlyClick.clicks = _earlyClick.clicks || []).push(c)
+          break
+        }
+        c = c.parentNode
+      }
+    }
+    document.addEventListener('click', _earlyClick)
+  </script>
+  <script src="https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/44f1e4c93f879f133b9b74c557b56961/variables-750d72b9d3e5d522f965bf904110c132.js" defer="defer"></script>
+  <script src="https://du11hjcvx0uqb.cloudfront.net/dist/webpack-production/vendor.bundle-a98d7d441e.js" defer="defer"></script>
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/timezone/America/New_York-c3226761e3.js" defer="defer"></script>
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/timezone/en_US-80a0ce259b.js" defer="defer"></script>
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/webpack-production/appBootstrap.bundle-d5627bb47c.js" defer="defer"></script>
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/webpack-production/common.bundle-02869e692d.js" defer="defer"></script>
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/webpack-production/assignment_show.bundle-a9d2aa7836.js" defer="defer"></script>
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/webpack-production/submit_assignment.bundle-f6fd0a4d3b.js" defer="defer"></script>
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/webpack-production/edit_rubric.bundle-34d3c8cd7a.js" defer="defer"></script>
+</head>
+
+<body class="with-left-side course-menu-expanded with-right-side assignments primary-nav-expanded context-course_357714 lato-font-not-loaded-yet">
+
+<noscript>
+  <div role="alert" class="ic-flash-static ic-flash-error">
+    <div class="ic-flash__icon" aria-hidden="true">
+      <i class="icon-warning"></i>
+    </div>
+    <h1>You need to have JavaScript enabled in order to access this site.</h1>
+  </div>
+</noscript>
+
+
+
+
+
+<ul id="flash_message_holder"></ul>
+<div id="flash_screenreader_holder"></div>
+
+<div id="application" class="ic-app">
+  
+  <header id="header" class="ic-app-header no-print ">
+    <a href="#content" id="skip_navigation_link">Skip To Content</a>
+      <div role="region" class="ic-app-header__main-navigation" aria-label="Global Navigation">
+        <div class="ic-app-header__logomark-container">
+          <a href="https://ufl.instructure.com/" class="ic-app-header__logomark">
+            <span class="screenreader-only">Dashboard</span>
+          </a>
+        </div>
+        <ul id="menu" class="ic-app-header__menu-list">
+            <li class="menu-item ic-app-header__menu-list-item ">
+              <a id="global_nav_profile_link" href="/profile" class="ic-app-header__menu-list-link">
+                <div class="menu-item-icon-container" aria-hidden="true">
+                  <div class="ic-avatar ">
+                    <img src="https://ufl.instructure.com/images/thumbnails/27226892/7RrSWEi6AdRHXZWNjLbLgAfbD8KRh10khsBwIZLc" alt="Matthew Carr" />
+                  </div>
+                </div>
+                <div class="menu-item__text">
+                  Account
+                </div>
+              </a>
+            </li>
+          <li class="ic-app-header__menu-list-item ">
+            <a id="global_nav_dashboard_link" href="https://ufl.instructure.com/" class="ic-app-header__menu-list-link">
+              <div class="menu-item-icon-container" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg ic-icon-svg--dashboard" version="1.1" x="0" y="0" viewBox="0 0 280 200" enable-background="new 0 0 280 200" xml:space="preserve"><path d="M273.09,180.75H197.47V164.47h62.62A122.16,122.16,0,1,0,17.85,142a124,124,0,0,0,2,22.51H90.18v16.29H6.89l-1.5-6.22A138.51,138.51,0,0,1,1.57,142C1.57,65.64,63.67,3.53,140,3.53S278.43,65.64,278.43,142a137.67,137.67,0,0,1-3.84,32.57ZM66.49,87.63,50.24,71.38,61.75,59.86,78,76.12Zm147,0L202,76.12l16.25-16.25,11.51,11.51ZM131.85,53.82v-23h16.29v23Zm15.63,142.3a31.71,31.71,0,0,1-28-16.81c-6.4-12.08-15.73-72.29-17.54-84.25a8.15,8.15,0,0,1,13.58-7.2c8.88,8.21,53.48,49.72,59.88,61.81a31.61,31.61,0,0,1-27.9,46.45ZM121.81,116.2c4.17,24.56,9.23,50.21,12,55.49A15.35,15.35,0,1,0,161,157.3C158.18,152,139.79,133.44,121.81,116.2Z" /></svg>
+
+              </div>
+              <div class="menu-item__text">Dashboard</div>
+            </a>
+          </li>
+          <li class="menu-item ic-app-header__menu-list-item ic-app-header__menu-list-item--active">
+            <a id="global_nav_courses_link" href="/courses" class="ic-app-header__menu-list-link">
+              <div class="menu-item-icon-container" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg ic-icon-svg--courses" version="1.1" x="0" y="0" viewBox="0 0 280 259" enable-background="new 0 0 280 259" xml:space="preserve"><path d="M73.31,198c-11.93,0-22.22,8-24,18.73a26.67,26.67,0,0,0-.3,3.63v.3a22,22,0,0,0,5.44,14.65,22.47,22.47,0,0,0,17.22,8H200V228.19h-134V213.08H200V198Zm21-105.74h90.64V62H94.3ZM79.19,107.34V46.92H200v60.42Zm7.55,30.21V122.45H192.49v15.11ZM71.65,16.71A22.72,22.72,0,0,0,49,39.36V190.88a41.12,41.12,0,0,1,24.32-8h157V16.71ZM33.88,39.36A37.78,37.78,0,0,1,71.65,1.6H245.36V198H215.15v45.32h22.66V258.4H71.65a37.85,37.85,0,0,1-37.76-37.76Z"/></svg>
+
+              </div>
+              <div class="menu-item__text">
+                Courses
+              </div>
+            </a>
+          </li>
+            <li class="menu-item ic-app-header__menu-list-item ">
+              <a id="global_nav_groups_link" href="/groups" class="ic-app-header__menu-list-link">
+                <div class="menu-item-icon-container" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg ic-icon-svg--groups" viewBox="0 0 200 135"><path d="M134.5 129.4c0-1.1 0-19.8-6.2-31.1-4.5-8.5-16.4-12.4-35-19.2-1.7-.6-3.4-1.1-5.1-1.7v-8.5c5.6-5.1 8.5-12.4 8.5-20.3V29.4C96.6 13 83.6 0 67.2 0S37.9 13 37.9 29.4v19.2c0 7.3 3.4 14.7 8.5 20.3v8.5c-1.7.6-3.4 1.1-5.1 1.7-18.6 6.2-30.5 10.7-35 19.2C0 109.6 0 128.8 0 129.4c0 3.4 2.3 5.6 5.6 5.6h123.7c3.5 0 5.7-2.3 5.2-5.6zm-123.2-5.7c.6-5.6 1.7-14.7 3.4-19.8C17 98.8 30 94.3 43.5 89.8c2.8-1.1 5.6-2.3 9-3.4 2.3-.6 4-2.8 4-5.1V66.7c0-1.7-.6-3.4-1.7-4.5-4-3.4-6.2-8.5-6.2-13.6V29.4c0-10.2 7.9-18.1 18.1-18.1s18.1 7.9 18.1 18.1v19.2c0 5.1-2.3 10.2-6.2 13.6-1.1 1.1-1.7 2.8-1.7 4.5v14.7c0 2.3 1.7 4.5 4 5.1 2.8 1.1 6.2 2.3 9 3.4 13.6 5.1 26.6 9.6 28.8 14.1 2.8 5.1 4 13.6 4.5 19.8H11.3zM196 79.1c-2.8-6.2-11.3-9.6-22.6-13.6l-1.7-.6v-3.4c4.5-4 6.8-9.6 6.8-15.8V35c0-12.4-9.6-22-22-22s-22 10.2-22 22v10.7c0 6.2 2.3 11.9 6.8 15.8V65l-1.7.6c-7.3 2.8-13 4.5-16.9 7.3-1.7 1.1-2.3 2.8-2.3 5.1.6 1.7 1.7 3.4 3.4 4.5 7.9 4 12.4 7.3 14.1 10.7 2.3 4.5 4 10.2 5.1 18.1.6 2.3 2.8 4.5 5.6 4.5h45.8c3.4 0 5.6-2.8 5.6-5.1 0-3.9 0-24.3-4-31.6zm-42.9 25.4c-1.1-6.8-2.8-12.4-5.1-16.9-1.7-4-5.1-6.8-9.6-10.2 1.7-1.1 3.4-1.7 5.1-2.3l5.6-2.3c1.7-.6 3.4-2.8 3.4-5.1v-9.6c0-1.7-.6-3.4-2.3-4.5-2.8-1.7-4.5-5.1-4.5-8.5V34.5c0-6.2 4.5-10.7 10.7-10.7s10.7 5.1 10.7 10.7v10.7c0 3.4-1.7 6.2-4.5 8.5-1.1 1.1-2.3 2.8-2.3 4.5v10.2c0 2.3 1.1 4.5 3.4 5.1l5.6 2.3c6.8 2.3 15.3 5.6 16.4 7.9 1.7 2.8 2.8 12.4 2.8 20.9h-35.4z"/></svg>
+
+                </div>
+                <div class="menu-item__text">
+                  Groups
+                </div>
+              </a>
+            </li>
+          <li class="menu-item ic-app-header__menu-list-item ">
+            <a id="global_nav_calendar_link" href="/calendar" class="ic-app-header__menu-list-link">
+              <div class="menu-item-icon-container" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg ic-icon-svg--calendar" version="1.1" x="0" y="0" viewBox="0 0 280 280" enable-background="new 0 0 280 280" xml:space="preserve"><path d="M197.07,213.38h16.31V197.07H197.07Zm-16.31,16.31V180.76h48.92v48.92Zm-48.92-16.31h16.31V197.07H131.85Zm-16.31,16.31V180.76h48.92v48.92ZM66.62,213.38H82.93V197.07H66.62ZM50.32,229.68V180.76H99.24v48.92Zm146.75-81.53h16.31V131.85H197.07Zm-16.31,16.31V115.54h48.92v48.92Zm-48.92-16.31h16.31V131.85H131.85Zm-16.31,16.31V115.54h48.92v48.92ZM66.62,148.15H82.93V131.85H66.62ZM50.32,164.46V115.54H99.24v48.92ZM34,262.29H246V82.93H34ZM246,66.62V42.16A8.17,8.17,0,0,0,237.84,34H213.38v8.15a8.15,8.15,0,1,1-16.31,0V34H82.93v8.15a8.15,8.15,0,0,1-16.31,0V34H42.16A8.17,8.17,0,0,0,34,42.16V66.62Zm-8.15-48.92a24.49,24.49,0,0,1,24.46,24.46V278.6H17.71V42.16A24.49,24.49,0,0,1,42.16,17.71H66.62V9.55a8.15,8.15,0,0,1,16.31,0v8.15H197.07V9.55a8.15,8.15,0,1,1,16.31,0v8.15Z"/></svg>
+
+              </div>
+              <div class="menu-item__text">
+                Calendar
+              </div>
+            </a>
+          </li>
+          <li class="menu-item ic-app-header__menu-list-item ">
+            <a id="global_nav_conversations_link" href="/conversations" class="ic-app-header__menu-list-link">
+              <div class="menu-item-icon-container" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg ic-icon-svg--inbox" version="1.1" x="0" y="0" viewBox="0 0 280 280" enable-background="new 0 0 280 280" xml:space="preserve"><path d="M91.72,120.75h96.56V104.65H91.72Zm0,48.28h80.47V152.94H91.72Zm0-96.56h80.47V56.37H91.72Zm160.94,34.88H228.52V10.78h-177v96.56H27.34A24.17,24.17,0,0,0,3.2,131.48V244.14a24.17,24.17,0,0,0,24.14,24.14H252.66a24.17,24.17,0,0,0,24.14-24.14V131.48A24.17,24.17,0,0,0,252.66,107.34Zm0,16.09a8.06,8.06,0,0,1,8,8v51.77l-32.19,19.31V123.44ZM67.58,203.91v-177H212.42v177ZM27.34,123.44H51.48v79.13L19.29,183.26V131.48A8.06,8.06,0,0,1,27.34,123.44ZM252.66,252.19H27.34a8.06,8.06,0,0,1-8-8V202l30,18H230.75l30-18v42.12A8.06,8.06,0,0,1,252.66,252.19Z"/></svg>
+
+                <span class="menu-item__badge" style="display: none">0</span>
+              </div>
+              <div class="menu-item__text">
+                Inbox
+              </div>
+            </a>
+          </li>
+            
+
+      <li id="context_external_tool_38210_menu_item" class="menu-item ic-app-header__menu-list-item">
+        <a class='ic-app-header__menu-list-link' href="/accounts/2010/external_tools/38210?launch_type=global_navigation">
+            <svg version="1.1" class="ic-icon-svg ic-icon-svg--lti menu-item__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64">
+              <path d="M9.4 32c0-7.8 6.5-14.3 14.4-14.3h11.7v-9.4h-11.8c-13.1 0-23.7 10.6-23.7 23.7s10.7 23.7 23.7 23.7h11.7v-9.4h-11.7c-7.9 0-14.3-6.5-14.3-14.3z m54.6 0l-19.1-17v11.3h-20.2c-3.1 0-5.6 2.5-5.6 5.6s2.5 5.6 5.6 5.7h20.2v11.2l19.1-16.8z"/>
+            </svg>
+          <div class="menu-item__text">
+            Commons
+          </div>
+        </a>
+      </li>
+
+          <li class="ic-app-header__menu-list-item">
+           <a id="global_nav_help_link" class="ic-app-header__menu-list-link" data-track-category="help system" data-track-label="help button" href="http://help.instructure.com/">
+              <div class="menu-item-icon-container" role="presentation">
+                <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg menu-item__icon svg-icon-help" version="1.1" x="0" y="0" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve" fill="currentColor"><path d="M100,127.88A11.15,11.15,0,1,0,111.16,139,11.16,11.16,0,0,0,100,127.88Zm8.82-88.08a33.19,33.19,0,0,1,23.5,23.5,33.54,33.54,0,0,1-24,41.23,3.4,3.4,0,0,0-2.74,3.15v9.06H94.42v-9.06a14.57,14.57,0,0,1,11.13-14,22.43,22.43,0,0,0,13.66-10.27,22.73,22.73,0,0,0,2.31-17.37A21.92,21.92,0,0,0,106,50.59a22.67,22.67,0,0,0-19.68,3.88,22.18,22.18,0,0,0-8.65,17.64H66.54a33.25,33.25,0,0,1,13-26.47A33.72,33.72,0,0,1,108.82,39.8ZM100,5.2A94.8,94.8,0,1,0,194.8,100,94.91,94.91,0,0,0,100,5.2m0,178.45A83.65,83.65,0,1,1,183.65,100,83.73,83.73,0,0,1,100,183.65" transform="translate(-5.2 -5.2)"/></svg>
+
+              </div>
+              <div class="menu-item__text">
+                Help
+              </div>
+</a>          </li>
+        </ul>
+      </div>
+      <div class="ic-app-header__secondary-navigation">
+        <ul class="ic-app-header__menu-list">
+          <li class="menu-item ic-app-header__menu-list-item">
+            <button
+              id="primaryNavToggle"
+              class="ic-app-header__menu-list-link ic-app-header__menu-list-link--nav-toggle"
+              aria-label="Minimize global navigation"
+              title="Minimize global navigation"
+            >
+              <div class="menu-item-icon-container" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg ic-icon-svg--navtoggle" version="1.1" x="0" y="0" width="40" height="32" viewBox="0 0 40 32" xml:space="preserve">
+  <path d="M39.5,30.28V2.48H37.18v27.8Zm-4.93-13.9L22.17,4,20.53,5.61l9.61,9.61H.5v2.31H30.14l-9.61,9.61,1.64,1.64Z"/>
+</svg>
+
+              </div>
+            </button>
+          </li>
+        </ul>
+      </div>
+    <div id="global_nav_tray_container"></div>
+  </header>
+
+
+  <div id="instructure_ajax_error_box">
+    <div style="text-align: right; background-color: #fff;"><a href="#" class="close_instructure_ajax_error_box_link">Close</a></div>
+    <iframe id="instructure_ajax_error_result" src="about:blank" style="border: 0;" title="Error"></iframe>
+  </div>
+
+  
+
+  <div id="wrapper" class="ic-Layout-wrapper">
+      <div class="ic-app-nav-toggle-and-crumbs no-print">
+          <button type="button" id="courseMenuToggle" class="Button Button--link ic-app-course-nav-toggle" aria-live="polite" aria-label="Hide Courses Navigation Menu" title="Hide Courses Navigation Menu">
+            <i class="icon-hamburger" aria-hidden="true"></i>
+          </button>
+          <div class="ic-app-crumbs">
+        <nav id="breadcrumbs" role="navigation" aria-label="breadcrumbs"><ul><li class="home"><a href="/"><span class="ellipsible">      <i class="icon-home"
+         title="My Dashboard">
+        <span class="screenreader-only">My Dashboard</span>
+      </i>
+</span></a></li><li><a href="/courses/357714"><span class="ellipsible">COP5615</span></a></li><li><a href="/courses/357714/assignments"><span class="ellipsible">Assignments</span></a></li><li><a href="https://ufl.instructure.com/courses/357714/assignments/3671057"><span class="ellipsible">Project 4.1</span></a></li></ul></nav>
+        </div>
+      </div>
+    <div id="main" class="ic-Layout-columns">
+        <div class="ic-Layout-watermark"></div>
+        <div id="left-side"
+          class="ic-app-course-menu list-view"
+          style="display: block"
+          >
+              <span id="section-tabs-header-subtitle" class="ellipsis">Fall 2018</span>
+            <nav role="navigation" aria-label="Courses Navigation Menu"><ul id="section-tabs"><li class="section"><a href="/courses/357714" title="Home" class="home">Home</a></li><li class="section"><a href="/courses/357714/announcements" title="Announcements" class="announcements">Announcements</a></li><li class="section"><a href="/courses/357714/assignments" title="Assignments" class="assignments active">Assignments</a></li><li class="section"><a href="/courses/357714/discussion_topics" title="Discussions" class="discussions">Discussions</a></li><li class="section"><a href="/courses/357714/grades" title="Grades" class="grades">Grades</a></li><li class="section"><a href="/courses/357714/users" title="People" class="people">People</a></li><li class="section"><a href="/courses/357714/files" title="Files" class="files">Files</a></li><li class="section"><a href="/courses/357714/assignments/syllabus" title="Syllabus" class="syllabus">Syllabus</a></li><li class="section"><a href="/courses/357714/conferences" title="Conferences" class="conferences">Conferences</a></li><li class="section"><a href="/courses/357714/collaborations" title="Collaborations" class="collaborations">Collaborations</a></li><li class="section"><a href="/courses/357714/external_tools/16951" title="Chat" class="context_external_tool_16951">Chat</a></li><li class="section"><a href="/courses/357714/external_tools/31295" title="Office 365" class="context_external_tool_31295">Office 365</a></li></ul></nav>
+        </div>
+      <div id="not_right_side" class="ic-app-main-content">
+        <div id="content-wrapper" class="ic-Layout-contentWrapper">
+            
+
+          <div id="content" class="ic-Layout-contentMain" role="main">
+            
+
+
+
+
+
+<div id="assignment_show" class="assignment content_underline_links">
+    <!--Student View-->
+    <div class='assignment-title'>
+      <div class='title-content'>
+        <h1 class="title">
+          Project 4.1
+        </h1>
+      </div>
+      <div class='assignment-buttons'>
+        
+
+        <a role="button" class="Button Button--primary submit_assignment_link late" href="#">Re-submit Assignment</a>
+      </div>
+    </div>
+    <ul class='student-assignment-overview'>
+      <li>
+        <span class='title'>Due</span>
+        <span class='value'>
+          <span class="date_text">
+                <span class="display_date">Nov 26</span> by 
+                <span class="display_time">11:59pm</span>
+          </span>
+        </span>
+      </li>
+      <li>
+        <span class='title'>Points</span>
+        <span class='value'>100</span>
+      </li>
+        <li>
+          <span class='title'>Submitting</span>
+          <span class='value'>a file upload</span>
+        </li>
+      
+  <li>
+    <span class="title">Available</span>
+    <span class="value">
+        Nov 25 at 12am - Dec 13 at 11:59pm
+        <span style="font-size: 0.8em;">19 days</span>
+    </span>
+  </li>
+
+      <div class="clear"></div>
+    </ul>
+
+  <div class="clear"></div>
+
+
+  <div class="clear"></div>
+
+  <div class="description user_content student-version"><p>The goal of this (and the next project) is to implement Bitcoin and (part 2)  to build a large simulator to determine its behavior.</p>
+<p>As a reference, you can use the original paper: <a class="instructure_file_link" title="bitcoin.pdf" href="/courses/357714/files/40476401/download?verifier=wzIb2Jo4RmGTP8CYAnhPmrzCW4Z9pStpFw6lSbEO&amp;wrap=1" data-api-endpoint="https://ufl.instructure.com/api/v1/courses/357714/files/40476401" data-api-returntype="File">bitcoin.pdf</a>, the extra material at<a href="https://bitcoin.org/en/developer-guide#block-chain"> bitcoint.org. Any other reference is fine as well.</a></p>
+<p>In part I, you have to accomplish the following goals:</p>
+<p>1. Implement enough of the bitcoin protocol to be able to mine bitcoins, implement wallets (enough to get the other goals), transact bitcoins. For mining, make sure you set the threshold low so you can mine very fast (milliseconds to seconds)</p>
+<p>2. Write test cases verifying the correctness for each task. Specifically, you need to write unit test (for focused functionality such as correct computation of the hashes) and functional tests (simple scenarios in which a transaction happens between two participants).</p>
+<p>When you submit the project, make sure you include a README that explains what functionality is implemented, who to run the tests, etc.</p>
+<p> </p>
+<p>In part II of the project, you need to do:</p>
+<p>1. Finish the distributed protocol </p>
+<p>2. Implement a simulation with at least 100 participants in which coins get mined and transacted.</p>
+<p>3. Implement a web interface using the Phoenix that allows access to the ongoing simulation using a web browser (need to use the matching JavaScript library that allows Phoenix messages to be received in the browser). For charting, you can use <a href="http://www.chartjs.org/docs/latest/">Charts.js or any other charting library. As part of the simulation, capture various metrics and send them via Phoenix to the browser.</a></p>
+<p>4. Implement various mining/transacting scenarios and describe them and their results in your README. </p>
+<p>Bonus </p>
+<p>1. Implements more bitcoin "features" for part I (+20%)</p>
+<p>2. Implement an interface for "transacting" bitcoins using Phoenix and make it part of the simulated network (+20%). The public key crypto signing must happen in the browser (you can use <a href="https://github.com/indutny/elliptic">package elliptic</a> for that. </p>
+<p> </p></div>
+
+
+  <div style="display: none;">
+    <span class="timestamp">1543294799</span>
+    <span class="due_date_string">11/26/2018</span>
+    <span class="due_time_string">11:59pm</span>
+  </div>
+</div>
+
+
+  
+<div style="display: none;" id="submit_assignment" data-context_code="course_357714" data-asset_string="assignment_3671057">
+  <div class="content" id="submit_assignment_tabs">
+    <ul>
+        <li><a href="#submit_online_upload_form" class="submit_online_upload_option">File Upload</a></li>
+        <li><a href="#submit_from_external_tool_form_31295"
+          class="external-tool"
+          data-id="31295"
+          data-name="Microsoft Office 365">Office 365</a></li>
+        <li><a href="#submit_from_external_tool_form_57674"
+          class="external-tool"
+          data-id="57674"
+          data-name="Top Hat">Top Hat</a></li>
+    </ul>
+      
+<form id="submit_online_upload_form" class="submit_assignment_form" enctype="multipart/form-data" action="/courses/357714/assignments/3671057/submissions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="m+cim/ijy9Rc0+9up6rfNjW9CyilDQZvjy1Qh8XFCALilg3Q1+b/szqn3hns5JJFbMhqQORefiD+XxPw96xrNw==" />
+    <input value="online_upload" type="hidden" name="submission[submission_type]" id="submission_submission_type" />
+    <input value="" id="submission_attachment_ids" type="hidden" name="submission[attachment_ids]" />
+    <input id="eula_agreement_timestamp" type="hidden" name="submission[eula_agreement_timestamp]" />
+    <table class="formtable" style="width: 100%;">
+      <tr>
+        <td colspan="2">
+          Upload a file, or choose a file you&#39;ve already uploaded.
+            
+        </td>
+      </tr><tr>
+        <td><label id="attachmentLabel" for="attachment_uploaded_data">File:</label></td>
+        <td>
+          <a href="#" class="add_another_file_link">
+            <i class="icon-add" aria-hidden="true"></i>
+            Add Another File
+          </a>
+          <div id="submission_attachment_blank" class="submission_attachment" style="display: none;">
+            <input aria-labelledby="attachmentLabel" type="file" name="attachments[-1][uploaded_data]" class="input-file"/>
+            <a href="#" class="remove_attachment_link no-hover" style="display: none;"><i class="icon-end" aria-hidden="true"></i><span class="screenreader-only">remove empty attachment</span></a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td style="font-size: 0.8em;">
+        <a href="#" class="toggle_uploaded_files_link">Click here to find a file you&#39;ve already uploaded</a><br/>
+        <div id="uploaded_files" style="display: none;">
+          
+          
+<ul>
+    <li class="folder  folder folder_2751373">
+      <span class="id" style="display: none;">2751373</span>
+      <span class="text name">my files</span>
+        
+<ul>
+    <li class="folder  folder folder_2751374">
+      <span class="id" style="display: none;">2751374</span>
+      <span class="text name">unfiled</span>
+        
+<ul>
+    <li class="file  file file_27082774">
+      <span class="id" style="display: none;">27082774</span>
+      <span class="text name">04_Jan_21:03_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27082780">
+      <span class="id" style="display: none;">27082780</span>
+      <span class="text name">04_Jan_21:05_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27226836">
+      <span class="id" style="display: none;">27226836</span>
+      <span class="text name">17_Jan_13:48_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27581749">
+      <span class="id" style="display: none;">27581749</span>
+      <span class="text name">18_Feb_17:41_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27583042">
+      <span class="id" style="display: none;">27583042</span>
+      <span class="text name">18_Feb_20:19_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27619156">
+      <span class="id" style="display: none;">27619156</span>
+      <span class="text name">22_Feb_19:20_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27619170">
+      <span class="id" style="display: none;">27619170</span>
+      <span class="text name">22_Feb_19:22_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27619249">
+      <span class="id" style="display: none;">27619249</span>
+      <span class="text name">22_Feb_19:30_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27711864">
+      <span class="id" style="display: none;">27711864</span>
+      <span class="text name">05_Mar_20:27_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27716172">
+      <span class="id" style="display: none;">27716172</span>
+      <span class="text name">06_Mar_21:31_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27788702">
+      <span class="id" style="display: none;">27788702</span>
+      <span class="text name">13_Mar_16:50_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27789716">
+      <span class="id" style="display: none;">27789716</span>
+      <span class="text name">13_Mar_18:40_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27789839">
+      <span class="id" style="display: none;">27789839</span>
+      <span class="text name">13_Mar_18:55_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27887388">
+      <span class="id" style="display: none;">27887388</span>
+      <span class="text name">21_Mar_14:49_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27892666">
+      <span class="id" style="display: none;">27892666</span>
+      <span class="text name">21_Mar_22:16_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27894808">
+      <span class="id" style="display: none;">27894808</span>
+      <span class="text name">22_Mar_01:39_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27894814">
+      <span class="id" style="display: none;">27894814</span>
+      <span class="text name">22_Mar_01:40_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27901194">
+      <span class="id" style="display: none;">27901194</span>
+      <span class="text name">22_Mar_16:47_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27901742">
+      <span class="id" style="display: none;">27901742</span>
+      <span class="text name">22_Mar_17:44_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_27934097">
+      <span class="id" style="display: none;">27934097</span>
+      <span class="text name">25_Mar_14:22_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_28046811">
+      <span class="id" style="display: none;">28046811</span>
+      <span class="text name">03_Apr_13:31_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_28046882">
+      <span class="id" style="display: none;">28046882</span>
+      <span class="text name">03_Apr_13:43_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_28128580">
+      <span class="id" style="display: none;">28128580</span>
+      <span class="text name">08_Apr_17:57_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_28129043">
+      <span class="id" style="display: none;">28129043</span>
+      <span class="text name">08_Apr_19:01_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_28244529">
+      <span class="id" style="display: none;">28244529</span>
+      <span class="text name">16_Apr_18:37_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_28247887">
+      <span class="id" style="display: none;">28247887</span>
+      <span class="text name">17_Apr_14:21_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_28250219">
+      <span class="id" style="display: none;">28250219</span>
+      <span class="text name">17_Apr_18:55_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_28258630">
+      <span class="id" style="display: none;">28258630</span>
+      <span class="text name">18_Apr_11:22_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_28259673">
+      <span class="id" style="display: none;">28259673</span>
+      <span class="text name">18_Apr_12:36_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_28334585">
+      <span class="id" style="display: none;">28334585</span>
+      <span class="text name">23_Apr_20:18_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_29476409">
+      <span class="id" style="display: none;">29476409</span>
+      <span class="text name">30_Aug_19:39_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_29521232">
+      <span class="id" style="display: none;">29521232</span>
+      <span class="text name">05_Sep_04:14_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_29525209">
+      <span class="id" style="display: none;">29525209</span>
+      <span class="text name">05_Sep_18:58_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_29526180">
+      <span class="id" style="display: none;">29526180</span>
+      <span class="text name">05_Sep_21:06_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_29770852">
+      <span class="id" style="display: none;">29770852</span>
+      <span class="text name">24_Sep_13:06_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_29770901">
+      <span class="id" style="display: none;">29770901</span>
+      <span class="text name">24_Sep_13:21_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_29776334">
+      <span class="id" style="display: none;">29776334</span>
+      <span class="text name">25_Sep_14:23_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_29805173">
+      <span class="id" style="display: none;">29805173</span>
+      <span class="text name">27_Sep_16:00_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_29939892">
+      <span class="id" style="display: none;">29939892</span>
+      <span class="text name">09_Oct_19:08_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_29940166">
+      <span class="id" style="display: none;">29940166</span>
+      <span class="text name">09_Oct_19:35_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_29940631">
+      <span class="id" style="display: none;">29940631</span>
+      <span class="text name">09_Oct_20:07_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30033204">
+      <span class="id" style="display: none;">30033204</span>
+      <span class="text name">16_Oct_20:31_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30178097">
+      <span class="id" style="display: none;">30178097</span>
+      <span class="text name">23_Oct_17:19_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30180768">
+      <span class="id" style="display: none;">30180768</span>
+      <span class="text name">23_Oct_21:03_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30181707">
+      <span class="id" style="display: none;">30181707</span>
+      <span class="text name">23_Oct_21:55_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30182419">
+      <span class="id" style="display: none;">30182419</span>
+      <span class="text name">23_Oct_22:30_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30308191">
+      <span class="id" style="display: none;">30308191</span>
+      <span class="text name">31_Oct_16:08_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30312309">
+      <span class="id" style="display: none;">30312309</span>
+      <span class="text name">31_Oct_19:56_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30317895">
+      <span class="id" style="display: none;">30317895</span>
+      <span class="text name">01_Nov_10:05_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30391243">
+      <span class="id" style="display: none;">30391243</span>
+      <span class="text name">06_Nov_19:07_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30392053">
+      <span class="id" style="display: none;">30392053</span>
+      <span class="text name">06_Nov_19:58_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30393271">
+      <span class="id" style="display: none;">30393271</span>
+      <span class="text name">06_Nov_21:06_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30504663">
+      <span class="id" style="display: none;">30504663</span>
+      <span class="text name">14_Nov_20:24_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30505677">
+      <span class="id" style="display: none;">30505677</span>
+      <span class="text name">14_Nov_21:35_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30506175">
+      <span class="id" style="display: none;">30506175</span>
+      <span class="text name">14_Nov_22:06_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30580711">
+      <span class="id" style="display: none;">30580711</span>
+      <span class="text name">19_Nov_13:41_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30580753">
+      <span class="id" style="display: none;">30580753</span>
+      <span class="text name">19_Nov_13:50_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30580804">
+      <span class="id" style="display: none;">30580804</span>
+      <span class="text name">19_Nov_14:00_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30599712">
+      <span class="id" style="display: none;">30599712</span>
+      <span class="text name">21_Nov_11:49_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30600150">
+      <span class="id" style="display: none;">30600150</span>
+      <span class="text name">21_Nov_12:12_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30608149">
+      <span class="id" style="display: none;">30608149</span>
+      <span class="text name">21_Nov_18:09_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30661134">
+      <span class="id" style="display: none;">30661134</span>
+      <span class="text name">28_Nov_21:26_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30758934">
+      <span class="id" style="display: none;">30758934</span>
+      <span class="text name">04_Dec_22:55_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30760796">
+      <span class="id" style="display: none;">30760796</span>
+      <span class="text name">04_Dec_23:53_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30774922">
+      <span class="id" style="display: none;">30774922</span>
+      <span class="text name">05_Dec_18:10_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30813045">
+      <span class="id" style="display: none;">30813045</span>
+      <span class="text name">07_Dec_14:43_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30832239">
+      <span class="id" style="display: none;">30832239</span>
+      <span class="text name">08_Dec_17:09_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_30832605">
+      <span class="id" style="display: none;">30832605</span>
+      <span class="text name">08_Dec_17:33_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_31373183">
+      <span class="id" style="display: none;">31373183</span>
+      <span class="text name">22_Jan_20:49_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_31373488">
+      <span class="id" style="display: none;">31373488</span>
+      <span class="text name">22_Jan_21:10_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_31569004">
+      <span class="id" style="display: none;">31569004</span>
+      <span class="text name">05_Feb_23:36_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_31666929">
+      <span class="id" style="display: none;">31666929</span>
+      <span class="text name">13_Feb_16:14_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_31757439">
+      <span class="id" style="display: none;">31757439</span>
+      <span class="text name">20_Feb_23:50_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_31816412">
+      <span class="id" style="display: none;">31816412</span>
+      <span class="text name">25_Feb_16:36_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_31816716">
+      <span class="id" style="display: none;">31816716</span>
+      <span class="text name">25_Feb_17:34_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_31938433">
+      <span class="id" style="display: none;">31938433</span>
+      <span class="text name">06_Mar_17:45_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_31939411">
+      <span class="id" style="display: none;">31939411</span>
+      <span class="text name">06_Mar_23:42_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_31950736">
+      <span class="id" style="display: none;">31950736</span>
+      <span class="text name">09_Mar_13:26_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_31950966">
+      <span class="id" style="display: none;">31950966</span>
+      <span class="text name">09_Mar_14:26_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_32101173">
+      <span class="id" style="display: none;">32101173</span>
+      <span class="text name">19_Mar_21:58_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_32114573">
+      <span class="id" style="display: none;">32114573</span>
+      <span class="text name">20_Mar_15:29_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_32207304">
+      <span class="id" style="display: none;">32207304</span>
+      <span class="text name">27_Mar_19:11_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_32208175">
+      <span class="id" style="display: none;">32208175</span>
+      <span class="text name">27_Mar_20:22_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_32353935">
+      <span class="id" style="display: none;">32353935</span>
+      <span class="text name">07_Apr_15:35_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_32356296">
+      <span class="id" style="display: none;">32356296</span>
+      <span class="text name">07_Apr_16:38_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_32487732">
+      <span class="id" style="display: none;">32487732</span>
+      <span class="text name">16_Apr_20:01_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_32490085">
+      <span class="id" style="display: none;">32490085</span>
+      <span class="text name">16_Apr_22:15_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_32730500">
+      <span class="id" style="display: none;">32730500</span>
+      <span class="text name">01_May_15:36_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_32853108">
+      <span class="id" style="display: none;">32853108</span>
+      <span class="text name">13_May_19:03_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_32912389">
+      <span class="id" style="display: none;">32912389</span>
+      <span class="text name">21_May_21:12_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_32988361">
+      <span class="id" style="display: none;">32988361</span>
+      <span class="text name">01_Jun_19:27_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33017382">
+      <span class="id" style="display: none;">33017382</span>
+      <span class="text name">05_Jun_19:55_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33046672">
+      <span class="id" style="display: none;">33046672</span>
+      <span class="text name">08_Jun_16:28_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33075979">
+      <span class="id" style="display: none;">33075979</span>
+      <span class="text name">11_Jun_15:06_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33150334">
+      <span class="id" style="display: none;">33150334</span>
+      <span class="text name">20_Jun_18:06_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33228960">
+      <span class="id" style="display: none;">33228960</span>
+      <span class="text name">01_Jul_20:45_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33231423">
+      <span class="id" style="display: none;">33231423</span>
+      <span class="text name">02_Jul_18:22_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33231453">
+      <span class="id" style="display: none;">33231453</span>
+      <span class="text name">02_Jul_18:28_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33247132">
+      <span class="id" style="display: none;">33247132</span>
+      <span class="text name">05_Jul_23:58_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33254831">
+      <span class="id" style="display: none;">33254831</span>
+      <span class="text name">06_Jul_20:03_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33281966">
+      <span class="id" style="display: none;">33281966</span>
+      <span class="text name">09_Jul_23:21_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33339902">
+      <span class="id" style="display: none;">33339902</span>
+      <span class="text name">11_Jul_15:35_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33339932">
+      <span class="id" style="display: none;">33339932</span>
+      <span class="text name">11_Jul_15:39_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33399588">
+      <span class="id" style="display: none;">33399588</span>
+      <span class="text name">16_Jul_16:25_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33399589">
+      <span class="id" style="display: none;">33399589</span>
+      <span class="text name">16_Jul_16:25_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33446211">
+      <span class="id" style="display: none;">33446211</span>
+      <span class="text name">20_Jul_19:45_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33494892">
+      <span class="id" style="display: none;">33494892</span>
+      <span class="text name">25_Jul_19:02_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33532139">
+      <span class="id" style="display: none;">33532139</span>
+      <span class="text name">28_Jul_12:08_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33537075">
+      <span class="id" style="display: none;">33537075</span>
+      <span class="text name">28_Jul_19:53_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33634188">
+      <span class="id" style="display: none;">33634188</span>
+      <span class="text name">02_Aug_17:36_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33634277">
+      <span class="id" style="display: none;">33634277</span>
+      <span class="text name">02_Aug_17:43_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33635026">
+      <span class="id" style="display: none;">33635026</span>
+      <span class="text name">02_Aug_19:26_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33685778">
+      <span class="id" style="display: none;">33685778</span>
+      <span class="text name">04_Aug_22:31_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_33695644">
+      <span class="id" style="display: none;">33695644</span>
+      <span class="text name">06_Aug_23:06_Grades-MAC2312.csv</span>
+    </li>
+    <li class="file  file file_34209924">
+      <span class="id" style="display: none;">34209924</span>
+      <span class="text name">04_Sep_22:26_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_34244730">
+      <span class="id" style="display: none;">34244730</span>
+      <span class="text name">06_Sep_21:57_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_34285879">
+      <span class="id" style="display: none;">34285879</span>
+      <span class="text name">12_Sep_14:36_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_34475716">
+      <span class="id" style="display: none;">34475716</span>
+      <span class="text name">25_Sep_22:00_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_34492201">
+      <span class="id" style="display: none;">34492201</span>
+      <span class="text name">26_Sep_22:32_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_34492209">
+      <span class="id" style="display: none;">34492209</span>
+      <span class="text name">26_Sep_22:33_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_34620064">
+      <span class="id" style="display: none;">34620064</span>
+      <span class="text name">04_Oct_21:49_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_34632956">
+      <span class="id" style="display: none;">34632956</span>
+      <span class="text name">05_Oct_16:33_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_34950631">
+      <span class="id" style="display: none;">34950631</span>
+      <span class="text name">25_Oct_16:13_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_35088720">
+      <span class="id" style="display: none;">35088720</span>
+      <span class="text name">01_Nov_22:35_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_35095533">
+      <span class="id" style="display: none;">35095533</span>
+      <span class="text name">02_Nov_11:47_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_35166421">
+      <span class="id" style="display: none;">35166421</span>
+      <span class="text name">05_Nov_19:05_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_35377474">
+      <span class="id" style="display: none;">35377474</span>
+      <span class="text name">16_Nov_12:21_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_35490265">
+      <span class="id" style="display: none;">35490265</span>
+      <span class="text name">27_Nov_15:01_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_35761479">
+      <span class="id" style="display: none;">35761479</span>
+      <span class="text name">10_Dec_15:11_Grades-MAC2311.csv</span>
+    </li>
+    <li class="file  file file_36496800">
+      <span class="id" style="display: none;">36496800</span>
+      <span class="text name">29_Jan_19:34_Grades-MAC2312_Live.csv</span>
+    </li>
+    <li class="file  file file_36497296">
+      <span class="id" style="display: none;">36497296</span>
+      <span class="text name">29_Jan_20:12_Grades-MAC2312_Live.csv</span>
+    </li>
+    <li class="file  file file_36713530">
+      <span class="id" style="display: none;">36713530</span>
+      <span class="text name">2018-02-12T1957_Grades-MAC2312_Live.csv</span>
+    </li>
+    <li class="file  file file_36714259">
+      <span class="id" style="display: none;">36714259</span>
+      <span class="text name">2018-02-12T2038_Grades-MAC2312_Live.csv</span>
+    </li>
+    <li class="file  file file_36828185">
+      <span class="id" style="display: none;">36828185</span>
+      <span class="text name">2018-02-20T0009_Grades-MAC2312_Live.csv</span>
+    </li>
+    <li class="file  file file_37028979">
+      <span class="id" style="display: none;">37028979</span>
+      <span class="text name">2018-03-11T1931_Grades-MAC2312_Live.csv</span>
+    </li>
+    <li class="file  file file_37149417">
+      <span class="id" style="display: none;">37149417</span>
+      <span class="text name">2018-03-20T0029_Grades-MAC2312_Live.csv</span>
+    </li>
+    <li class="file  file file_37163661">
+      <span class="id" style="display: none;">37163661</span>
+      <span class="text name">2018-03-20T2202_Grades-MAC2312_Live.csv</span>
+    </li>
+    <li class="file  file file_37498468">
+      <span class="id" style="display: none;">37498468</span>
+      <span class="text name">2018-04-09T2158_Grades-MAC2312_Live.csv</span>
+    </li>
+    <li class="file  file file_37651405">
+      <span class="id" style="display: none;">37651405</span>
+      <span class="text name">2018-04-17T2310_Grades-MAC2312_Live.csv</span>
+    </li>
+    <li class="file  file file_37748974">
+      <span class="id" style="display: none;">37748974</span>
+      <span class="text name">2018-04-23T2156_Grades-MAC2312_Live.csv</span>
+    </li>
+    <li class="file  file file_39673974">
+      <span class="id" style="display: none;">39673974</span>
+      <span class="text name">2018-09-11T1639_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_39674544">
+      <span class="id" style="display: none;">39674544</span>
+      <span class="text name">2018-09-11T1711_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_39712453">
+      <span class="id" style="display: none;">39712453</span>
+      <span class="text name">2018-09-13T0054_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_39712467">
+      <span class="id" style="display: none;">39712467</span>
+      <span class="text name">2018-09-13T0058_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_39712543">
+      <span class="id" style="display: none;">39712543</span>
+      <span class="text name">2018-09-13T0111_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_39712553">
+      <span class="id" style="display: none;">39712553</span>
+      <span class="text name">2018-09-13T0113_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_39789446">
+      <span class="id" style="display: none;">39789446</span>
+      <span class="text name">2018-09-17T2213_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_39789548">
+      <span class="id" style="display: none;">39789548</span>
+      <span class="text name">2018-09-17T2218_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_39790995">
+      <span class="id" style="display: none;">39790995</span>
+      <span class="text name">2018-09-17T2309_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_39792839">
+      <span class="id" style="display: none;">39792839</span>
+      <span class="text name">2018-09-18T0016_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_39852479">
+      <span class="id" style="display: none;">39852479</span>
+      <span class="text name">2018-09-20T2123_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_39925699">
+      <span class="id" style="display: none;">39925699</span>
+      <span class="text name">2018-09-25T1606_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_39926885">
+      <span class="id" style="display: none;">39926885</span>
+      <span class="text name">2018-09-25T1711_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_39929397">
+      <span class="id" style="display: none;">39929397</span>
+      <span class="text name">2018-09-25T1940_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_39953827">
+      <span class="id" style="display: none;">39953827</span>
+      <span class="text name">2018-09-26T2310_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40079159">
+      <span class="id" style="display: none;">40079159</span>
+      <span class="text name">2018-10-03T2055_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40080008">
+      <span class="id" style="display: none;">40080008</span>
+      <span class="text name">2018-10-03T2134_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40082289">
+      <span class="id" style="display: none;">40082289</span>
+      <span class="text name">2018-10-03T2309_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40174577">
+      <span class="id" style="display: none;">40174577</span>
+      <span class="text name">2018-10-09T2052_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40175450">
+      <span class="id" style="display: none;">40175450</span>
+      <span class="text name">2018-10-09T2151_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40191698">
+      <span class="id" style="display: none;">40191698</span>
+      <span class="text name">2018-10-10T1806_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40315185">
+      <span class="id" style="display: none;">40315185</span>
+      <span class="text name">2018-10-17T2242_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40316889">
+      <span class="id" style="display: none;">40316889</span>
+      <span class="text name">2018-10-17T2336_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40328398">
+      <span class="id" style="display: none;">40328398</span>
+      <span class="text name">2018-10-18T0958_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40437964">
+      <span class="id" style="display: none;">40437964</span>
+      <span class="text name">2018-10-24T2058_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40439702">
+      <span class="id" style="display: none;">40439702</span>
+      <span class="text name">2018-10-24T2225_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40441129">
+      <span class="id" style="display: none;">40441129</span>
+      <span class="text name">2018-10-24T2323_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40524710">
+      <span class="id" style="display: none;">40524710</span>
+      <span class="text name">2018-10-30T1600_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40525935">
+      <span class="id" style="display: none;">40525935</span>
+      <span class="text name">2018-10-30T1652_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40525973">
+      <span class="id" style="display: none;">40525973</span>
+      <span class="text name">2018-10-30T1655_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40527033">
+      <span class="id" style="display: none;">40527033</span>
+      <span class="text name">2018-10-30T1755_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40529507">
+      <span class="id" style="display: none;">40529507</span>
+      <span class="text name">2018-10-30T2015_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40601023">
+      <span class="id" style="display: none;">40601023</span>
+      <span class="text name">2018-11-04T2052_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40631404">
+      <span class="id" style="display: none;">40631404</span>
+      <span class="text name">2018-11-06T0811_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40633760">
+      <span class="id" style="display: none;">40633760</span>
+      <span class="text name">2018-11-06T1103_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40679401">
+      <span class="id" style="display: none;">40679401</span>
+      <span class="text name">2018-11-07T2127_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40688616">
+      <span class="id" style="display: none;">40688616</span>
+      <span class="text name">2018-11-08T0940_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40752245">
+      <span class="id" style="display: none;">40752245</span>
+      <span class="text name">2018-11-12T1822_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40792680">
+      <span class="id" style="display: none;">40792680</span>
+      <span class="text name">2018-11-13T1644_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_40793358">
+      <span class="id" style="display: none;">40793358</span>
+      <span class="text name">2018-11-13T1717_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_41059984">
+      <span class="id" style="display: none;">41059984</span>
+      <span class="text name">2018-11-28T2255_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+    <li class="file  file file_41258170">
+      <span class="id" style="display: none;">41258170</span>
+      <span class="text name">2018-12-07T0922_Grades-MAC2312:_Calculus_2_Fall_18_(Traditional).csv</span>
+    </li>
+</ul>
+
+    </li>
+    <li class="folder  folder folder_2751693">
+      <span class="id" style="display: none;">2751693</span>
+      <span class="text name">profile pictures</span>
+        
+<ul>
+    <li class="file  image file_27226892">
+      <span class="id" style="display: none;">27226892</span>
+      <span class="text name">profile.jpg</span>
+    </li>
+</ul>
+
+    </li>
+    <li class="folder  folder folder_2760535">
+      <span class="id" style="display: none;">2760535</span>
+      <span class="text name">conversation attachments</span>
+        
+<ul>
+    <li class="file  image file_31668303">
+      <span class="id" style="display: none;">31668303</span>
+      <span class="text name">catuogno_mc_score.png</span>
+    </li>
+    <li class="file  image file_31729947">
+      <span class="id" style="display: none;">31729947</span>
+      <span class="text name">IMG_20170218_163339.jpg</span>
+    </li>
+    <li class="file  image file_31869239">
+      <span class="id" style="display: none;">31869239</span>
+      <span class="text name">IMG_20170228_112735.jpg</span>
+    </li>
+    <li class="file  image file_33047683">
+      <span class="id" style="display: none;">33047683</span>
+      <span class="text name">fisher_exam1_responses.png</span>
+    </li>
+    <li class="file  xls file_33666253">
+      <span class="id" style="display: none;">33666253</span>
+      <span class="text name">Gradecalculating Sheet Summer2017.xlsx</span>
+    </li>
+    <li class="file  image file_36752334">
+      <span class="id" style="display: none;">36752334</span>
+      <span class="text name">IMG_20180214_214613.jpg</span>
+    </li>
+    <li class="file  image file_41204761">
+      <span class="id" style="display: none;">41204761</span>
+      <span class="text name">mishur_exam3.png</span>
+    </li>
+    <li class="file  image file_41283683">
+      <span class="id" style="display: none;">41283683</span>
+      <span class="text name">IMG_20181208_191649242.jpg</span>
+    </li>
+    <li class="file  image file_41283684">
+      <span class="id" style="display: none;">41283684</span>
+      <span class="text name">IMG_20181208_191655136.jpg</span>
+    </li>
+    <li class="file  image file_41310843">
+      <span class="id" style="display: none;">41310843</span>
+      <span class="text name">IMG_20181210_145755528.jpg</span>
+    </li>
+    <li class="file  image file_41310855">
+      <span class="id" style="display: none;">41310855</span>
+      <span class="text name">IMG_20181210_145755528-1.jpg</span>
+    </li>
+    <li class="file  pdf file_41330295">
+      <span class="id" style="display: none;">41330295</span>
+      <span class="text name">2312FinalF18-Answer.pdf</span>
+    </li>
+</ul>
+
+    </li>
+    <li class="folder  folder folder_4272632">
+      <span class="id" style="display: none;">4272632</span>
+      <span class="text name">Submissions</span>
+        
+<ul>
+    <li class="folder  folder folder_4272633">
+      <span class="id" style="display: none;">4272633</span>
+      <span class="text name">COP5615: Dist Oper Sys Princ, Fall 2018</span>
+        
+<ul>
+    <li class="file  zip file_39659185">
+      <span class="id" style="display: none;">39659185</span>
+      <span class="text name">MatthewCarr.zip</span>
+    </li>
+    <li class="file  file file_39756911">
+      <span class="id" style="display: none;">39756911</span>
+      <span class="text name">pushsum.go</span>
+    </li>
+    <li class="file  file file_39867739">
+      <span class="id" style="display: none;">39867739</span>
+      <span class="text name">router.go</span>
+    </li>
+    <li class="file  file file_39986874">
+      <span class="id" style="display: none;">39986874</span>
+      <span class="text name">pubsub.go</span>
+    </li>
+    <li class="file  zip file_40041813">
+      <span class="id" style="display: none;">40041813</span>
+      <span class="text name">MatthewCarr_Proj2.zip</span>
+    </li>
+    <li class="file  file file_40113207">
+      <span class="id" style="display: none;">40113207</span>
+      <span class="text name">bankaccount.go</span>
+    </li>
+    <li class="file  file file_40215421">
+      <span class="id" style="display: none;">40215421</span>
+      <span class="text name">bully.go</span>
+    </li>
+    <li class="file  zip file_40403826">
+      <span class="id" style="display: none;">40403826</span>
+      <span class="text name">MatthewCarr_Proj3.zip</span>
+    </li>
+    <li class="file  file file_40474533">
+      <span class="id" style="display: none;">40474533</span>
+      <span class="text name">crypto.go</span>
+    </li>
+    <li class="file  file file_40700958">
+      <span class="id" style="display: none;">40700958</span>
+      <span class="text name">supervisor.go</span>
+    </li>
+    <li class="file  file file_41104861">
+      <span class="id" style="display: none;">41104861</span>
+      <span class="text name">twophasecommit.go</span>
+    </li>
+    <li class="file  zip file_41163343">
+      <span class="id" style="display: none;">41163343</span>
+      <span class="text name">MatthewCarr_Proj4_1.zip</span>
+    </li>
+    <li class="file  file file_41181212">
+      <span class="id" style="display: none;">41181212</span>
+      <span class="text name">tokenring.go</span>
+    </li>
+    <li class="file  file file_41184305">
+      <span class="id" style="display: none;">41184305</span>
+      <span class="text name">leases.go</span>
+    </li>
+    <li class="file  file file_41224032">
+      <span class="id" style="display: none;">41224032</span>
+      <span class="text name">floodingconsensus.go</span>
+    </li>
+</ul>
+
+    </li>
+    <li class="folder  folder folder_4297792">
+      <span class="id" style="display: none;">4297792</span>
+      <span class="text name">CDA5155_CDA4102: Computer Architecture Principles, Fall 2018</span>
+        
+<ul>
+    <li class="file  pdf file_39812286">
+      <span class="id" style="display: none;">39812286</span>
+      <span class="text name">hw1MatthewCarr.pdf</span>
+    </li>
+    <li class="file  text file_40077210">
+      <span class="id" style="display: none;">40077210</span>
+      <span class="text name">MIPSsim.java.txt</span>
+    </li>
+    <li class="file  pdf file_40310796">
+      <span class="id" style="display: none;">40310796</span>
+      <span class="text name">hw2MatthewCarr.pdf</span>
+    </li>
+    <li class="file  pdf file_40676040">
+      <span class="id" style="display: none;">40676040</span>
+      <span class="text name">hw3MatthewCarr.pdf</span>
+    </li>
+    <li class="file  text file_40946735">
+      <span class="id" style="display: none;">40946735</span>
+      <span class="text name">MIPSsim-1.java.txt</span>
+    </li>
+    <li class="file  pdf file_41104806">
+      <span class="id" style="display: none;">41104806</span>
+      <span class="text name">hw4MatthewCarr.pdf</span>
+    </li>
+</ul>
+
+    </li>
+</ul>
+
+    </li>
+</ul>
+
+    </li>
+</ul>
+
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <textarea class="submission_comment_textarea" placeholder="Comments..." title="Additional comments" name="submission[comment]" id="submission_comment">
+</textarea>
+        </td>
+      </tr>
+      
+
+      
+
+      <tr>
+        <td colspan="2" class='button-container'>
+          <button type="button" class='cancel_button btn'>Cancel</button>
+          <button type="submit" class="btn btn-primary" id="submit_file_button">Submit Assignment</button>
+        </td>
+      </tr><tr style="display: none;">
+        <td colspan="2" style="text-align: center;">
+          Submitting... <img src=""/>
+        </td>
+      </tr>
+    </table>
+    </form>
+
+
+
+    <style>
+    #google_docs_tree li.folder {
+      cursor: pointer;
+    }
+    #google_docs_tree li.file {
+      cursor: pointer;
+      -moz-border-radius: 3px;
+      width: 80%;
+      padding-right: 20px;
+    }
+    #google_docs_tree li.file:hover {
+      background-color: #eee;
+    }
+    ul.instTree li span.active {
+      background: none;
+    }
+    #google_docs_tree li.file.leaf.active {
+      background-color: #ddd;
+    }
+    #google_docs_tree li.file .filename {
+      float: left;
+      max-width: 98%;
+    }
+    #google_docs_tree li.file .popout {
+      float: right;
+    }
+    </style>
+
+
+      <div id="submit_from_external_tool_form_31295" style="padding: 5px 5px 0 5px;"></div>
+      <div id="submit_from_external_tool_form_57674" style="padding: 5px 5px 0 5px;"></div>
+
+  </div>
+</div>
+
+
+
+
+
+  <div id="rubrics" style="margin-bottom: 10px;">
+    <div style="display: none;" id="rubric_parameters">
+      <input type="hidden" name="rubric_association[association_type]" value="Assignment"/>
+      <input type="hidden" name="rubric_association[association_id]" value="3671057"/>
+      <input type="hidden" name="rubric_association[purpose]" value="grading"/>
+    </div>
+    
+<div id="rubric_long_description_dialog" style="display: none;">
+  <div class="editing">
+    <form id="edit_criterion_form" class="no-margin-bottom">
+      <div>
+        <label class="rating_form_label">Description
+          <textarea class="description" rows="1" name="description"></textarea>
+        </label>
+      </div>
+      <div>
+        <label class="rating_form_label">Long Description
+          <textarea class="long_description" rows="4" name="long_description"></textarea>
+        </label>
+      </div>
+      <div class="button-container">
+        <button type="button" class="btn btn button-secondary cancel_button">Cancel</button>
+        <button type="button" class="btn save_button btn-primary">Update Criterion</button>
+      </div>
+    </form>
+  </div>
+  <div class="displaying">
+    <div class="long_description">
+    </div>
+  </div>
+</div>
+<div id="rubric_criterion_comments_dialog" style="display: none;">
+  <div
+    class="criterion_description"
+    style="border-bottom: 1px solid #ccc; padding: 5px 0; font-size: 1.2em; font-weight: bold; margin-bottom: 5px;"
+    tabindex="-1"
+  ></div>
+  <div class="editing">
+    <label for="criterion_comments_textarea">
+      Additional Comments:
+    </label>
+    <textarea
+      id="criterion_comments_textarea"
+      class="criterion_comments"
+      name="criterion_comments"
+      style="width: 370px;"></textarea>
+    <div class="button-container">
+      <button type="button" class="btn btn button-secondary cancel_button">Cancel</button>
+      <button type="button" class="btn save_button">Update Comments</button>
+    </div>
+  </div>
+  <div class="displaying">
+    Additional Comments:
+    <div class="criterion_comments" style="margin-top: 10px;">
+    </div>
+  </div>
+</div>
+<div id="rubric_rating_dialog" style="display: none;">
+  <div class="description" style="border-bottom: 1px solid #ccc; padding: 5px 0; font-size: 1.2em; font-weight: bold; margin-bottom: 5px;">
+    <span id="edit_rating_form_criterion_description"></span>
+  </div>
+  <div class="editing">
+    <form id="edit_rating_form" class="no-margin-bottom">
+      <div class="toggle_for_hide_points">
+        <div><label id='rating_form_score_label' class="rating_form_label">Rating Score</label></div>
+        <span id='rating_form_max_score_label' hidden>Rating max score</span>
+        <input id="points" aria-labelledby="rating_form_score_label" type="text" size="2" name="points" class="no-margin-bottom span1" />
+        <span class="range_rating">to >
+          <input aria-label="Rating min score" type="text" size="2" name="min_points" class="no-margin-bottom span1 min_points" placeholder="min"/>
+        </span>pts
+      </div>
+      <div>
+        <label for="rating_form_title" class="rating_form_label">Rating Title</label>
+        <input id="rating_form_title" type="text" class="rating_description" style="width: 90%;" name="description"/>
+      </div>
+      <div>
+        <label for="rating_form_description" class="rating_form_label">Rating Description</label>
+        <textarea id="rating_form_description" rows="4" style="width: 90%;" class="rating_long_description" name="rating_long_description" form="edit_rating_form"></textarea>
+      </div>
+      <div class="button-container">
+        <button type="button" class="btn button-secondary cancel_button">Cancel</button>
+        <button type="button" class="btn btn-primary save_button ok_button">Update Rating</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+  </div>
+  
+<div
+  class="rubric_container rubric  "
+  id="default_rubric"
+  style="display: none;"
+>
+  <div class="screenreader-only"><h2>Rubric</h2></div>
+  <div class="rubric_title">
+    <div style="display: none;" class="links displaying pull-right">
+      <a
+        href="/courses/357714/rubrics/%7B%7B%20id%20%7D%7D"
+        class=" edit_rubric_link no-print no-hover"
+        style=""
+        title="Edit Rubric"
+        aria-label="Edit Rubric"
+        role="button"
+      ><i class="icon-edit standalone-icon"></i></a>
+      <a
+        href="https://ufl.instructure.com/search/rubrics?q="
+        class="find_rubric_link no-print no-hover"
+        style=""
+        title="Find Another Rubric"
+        aria-label="Find Another Rubric"
+        role="button"
+      ><i class="icon-search standalone-icon"></i></a>
+        <a
+          href="/courses/357714/rubric_associations/%7B%7B%20rubric_association_id%20%7D%7D"
+          class="delete_rubric_link no-print no-hover"
+          style=""
+          title="Delete Rubric"
+          aria-label="Delete Rubric"
+          role="button"
+        ><i class="icon-trash standalone-icon"></i></a>
+      <div style="display: none;">
+        <div class="use_for_grading">&nbsp;</div>
+        <div class="free_form_criterion_comments">&nbsp;</div>
+        <div class="hide_score_total">&nbsp;</div>
+        <div class="hide_outcome_results">&nbsp;</div>
+        <div class="hide_points">&nbsp;</div>
+        <div class="rubric_association_id">&nbsp;</div>
+        <div class="user_id">&nbsp;</div>
+        <div class="assessment_type"></div>
+        <a href="/courses/357714/rubric_associations/%7B%7B%20rubric_association_id%20%7D%7D/assessments/%7B%7B%20assessment_id%20%7D%7D" rel="nofollow" class="edit_assessment_link">&nbsp;</a>
+        <a href="/courses/357714/rubrics/%7B%7B%20rubric_id%20%7D%7D" class="edit_rubric_url">&nbsp;</a>
+          <a href="/courses/357714/rubric_associations/%7B%7B%20association_id%20%7D%7D" class="delete_rubric_url">&nbsp;</a>
+      </div>
+    </div>
+    <div style="float: right; font-size: 0.8em; display: none;" class="links displaying locked">
+      <span style="">Can&#39;t change a rubric once you&#39;ve started using it.</span>
+        <a href="/courses/357714/rubric_associations/%7B%7B%20association_id%20%7D%7D" class="delete_rubric_url" style="display: none;">&nbsp;</a>
+    </div>
+
+    <div class="editing" style="float: right;">
+      <a href="https://ufl.instructure.com/search/rubrics?q=" class="find_rubric_link icon-search" style="" title="Find Existing Rubric">Find a Rubric</a>
+    </div>
+    <div class="editing" style="text-align: left">
+      <label for="rubric-title">Title:</label>
+      <input id="rubric-title" type="text" class="no-margin-bottom" name="title" value="Some Rubric" style="width: 200px;" maxlength="255" aria-label="Title:"/>
+      <a href="https://ufl.instructure.com/search/rubrics?q=" style="display: none;"><img alt="" src="https://du11hjcvx0uqb.cloudfront.net/dist/images/find-6164443e2a.png" /> Find Rubric</a>
+    </div>
+    <div class="displaying">
+      <span class="title" tabindex="-1">Title</span>
+    </div>
+    <div class="has-assessments-warning" style="display: none;">
+      You&#39;ve already rated students with this rubric.  Any major changes could affect their assessment results.
+    </div>
+  </div>
+<table class="rubric_table">
+<caption>
+  <div class="screenreader-only">
+    <span class="title">Title</span>
+  </div>
+</caption>
+<thead>
+  <tr>
+    <th scope="col">Criteria</th>
+    <th scope="col">Ratings</th>
+    <th scope="col" class="toggle_for_hide_points ">
+      Pts
+    </th>
+  </tr>
+</thead>
+<tbody>
+  
+<tr id="criterion_blank" class="criterion blank  " style="display: none;">
+  <td class="criterion_description hover-container pad-box-micro">
+    <div class="container">
+      <div class="links editing">
+          <a href="#" class="edit_criterion_link"><i class="icon-edit standalone-icon"></i><span class="screenreader-only">Edit criterion description</span></a>
+        <a href="#" class="delete_criterion_link"><i class="icon-trash standalone-icon"></i><span class="screenreader-only">Delete criterion row</span></a>
+      </div>
+      <div class="description_content">
+        <span class="outcome_sr_content" aria-hidden="true">
+          <i class="learning_outcome_flag icon-outcomes" aria-hidden="true"></i>
+          <span class="screenreader-only">This criterion is linked to a Learning Outcome</span>
+        </span>
+        <span class="description description_title">Description of criterion</span>
+        <span class="learning_outcome_id" style="display: none;"></span>
+        <span class="criterion_id" style="display: none;"></span>
+          <div class="long_description small_description"></div>
+        <div style="display: none;" class="long_description_holder editing empty">
+          <a href="#" class="long_description_link hidden">view longer description</a>
+          <textarea class="long_description" aria-label="Long Description" style="display: none;"></textarea>
+        </div>
+        <div class="hide_when_learning_outcome ">
+          <div class="criterion_use_range_div editing toggle_for_hide_points ">
+            <label>Range
+              <input type="checkbox" class="criterion_use_range" /></label>
+          </div>
+        </div>
+        <div class="threshold toggle_for_hide_points ">
+          threshold:
+          <span class="mastery_points">5</span> pts
+        </div>
+      </div>
+
+    </div>
+  </td>
+  <td style="padding: 0;">
+      <table class="ratings" style=""><tr>
+          <td id="rating_blank"
+              class="rating edge_rating
+                
+                "
+          >
+            <div class="container">
+              <div class="rating-main">
+                  <div class="editing links">
+                    <a href="#" class="edit_rating_link"><i class="icon-edit standalone-icon"></i><span class="screenreader-only">Edit rating</span></a>
+                    <a href="#" class="delete_rating_link"><i class="icon-trash standalone-icon" ></i><span class="screenreader-only">Delete rating</span></a>
+                  </div>
+                  <div class="clear"></div>
+                <span class="nobr toggle_for_hide_points ">
+                  <span class="points">5</span>
+                  <span class="range_rating" style="display: none;">to ><span class="min_points">0</span></span> pts
+                </span>
+                <div class="description rating_description_value">Full Marks</div>
+                <div class="rating_long_description small_description"></div>
+                <span class="rating_id" style="display: none;">blank</span>
+              </div>
+                <div class="editing links add_rating_link">
+                  <a href="#" class="add_rating_link_after" aria-label="Add rating"><i class="icon-add icon-Solid"></i></a>
+                </div>
+            </div>
+          </td>
+          <td id="rating_blank_2"
+              class="rating edge_rating
+                infinitesimal
+                "
+          >
+            <div class="container">
+              <div class="rating-main">
+                  <div class="editing links">
+                    <a href="#" class="edit_rating_link"><i class="icon-edit standalone-icon"></i><span class="screenreader-only">Edit rating</span></a>
+                    <a href="#" class="delete_rating_link"><i class="icon-trash standalone-icon" ></i><span class="screenreader-only">Delete rating</span></a>
+                  </div>
+                  <div class="clear"></div>
+                <span class="nobr toggle_for_hide_points ">
+                  <span class="points">0</span>
+                  <span class="range_rating" style="display: none;">to ><span class="min_points">0</span></span> pts
+                </span>
+                <div class="description rating_description_value">No Marks</div>
+                <div class="rating_long_description small_description"></div>
+                <span class="rating_id" style="display: none;">blank_2</span>
+              </div>
+            </div>
+          </td>
+      </tr></table>
+      <div style="display: none; font-size: 0.8em; margin: 5px;" class="custom_ratings">
+        This area will be used by the assessor to leave comments related to this criterion.
+      </div>
+  </td>
+  <td class="nobr points_form toggle_for_hide_points ">
+    <div class="editing" style="white-space: normal">
+      <span style="white-space: nowrap; font-size: 0.8em">
+          
+            <input
+              type="text"
+              aria-label="Points"
+              value="5"
+              class="criterion_points span1 no-margin-bottom"
+            />
+           pts
+      </span><br />
+    </div>
+    <div class="displaying">
+      <span style="white-space: nowrap;">
+        <span class="criterion_rating_points_holder" style="display: none;">
+          <span class="criterion_rating_points">&nbsp;</span> /
+        </span>
+        <span class="display_criterion_points">5</span> pts<br />
+      </span>
+    </div>
+    <div class="ignoring">
+      <span> -- </span>
+    </div>
+    <div class="criterion_comments">
+        <a href="#" class="no-hover criterion_comments_link" title="Additional Comments">
+          <img alt="Additional Comments" src="https://du11hjcvx0uqb.cloudfront.net/dist/images/rubric_comment-ddae8546ab.png" />
+        </a>
+        <div class="custom_rating" style="display: none;"></div>
+    </div>
+  </td>
+</tr>
+
+  <tr class="summary">
+    <td colspan="4">
+      <div class="total_points_holder toggle_for_hide_points "
+        style="float: right; ">
+        <span>Total Points:
+            <span class="rubric_total">
+              5
+            </span>
+ <span class="assessing">out of 5</span>        </span>
+      </div>
+      <div class="editing pull-left">
+        <span id="add_criterion_holder" class="criterion_link"></span>
+      </div>
+      <div class="clear"></div>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<table style="display: none;">
+  <tr id="edit_rubric">
+    <td colspan="4">
+      <form id="edit_rubric_form" class="edit-rubric-form no-margin-bottom">
+        <div class="rubric_custom_ratings" style="">
+          <input type="checkbox" id="rubric_custom_rating" class="rubric_custom_rating" />
+          <label for="rubric_custom_rating">I&#39;ll write free-form comments when assessing students</label>
+        </div>
+          <div class="hide_points" style="">
+            <input type="checkbox" id="hide_points" class="hide_points_checkbox" />
+            <label for="hide_points">Remove points from rubric</label>
+          </div>
+          <div class="hide_outcome_results" style="">
+            <input type="checkbox" id="hide_outcome_results" class="hide_outcome_results_checkbox" />
+            <label for="hide_outcome_results">Don&#39;t post Outcomes results to Learning Mastery Gradebook</label>
+          </div>
+          <div class="rubric_grading" style="">
+            <input type="checkbox" id="grading_rubric" class="grading_rubric_checkbox" />
+            <label for="grading_rubric">Use this rubric for assignment grading</label>
+          </div>
+        <div class="totalling_rubric" style="">
+          <input type="checkbox" id="totalling_rubric" class="totalling_rubric_checkbox" />
+          <label for="totalling_rubric">Hide score total for assessment results</label>
+        </div>
+        <div class="ic-Action-header ic-Action-header--half-margin">
+          <div class="ic-Action-header__Primary">
+            <button type="button" class="Button cancel_button">Cancel</button>
+            <button type="submit" class="Button Button--primary save_button">Create Rubric</button>
+          </div>
+        </div>
+      </form>
+    </td>
+  </tr>
+</table>
+
+
+  <div id="assignment_external_tools"></div>
+
+  
+
+
+
+          </div>
+        </div>
+        <div id="right-side-wrapper" class="ic-app-main-content__secondary">
+          <aside id="right-side" role="complementary">
+            
+<div id="sidebar_content">
+
+    
+<div class="details">
+  <h3>Submission</h3>
+    <div class="header">
+        <i class="icon-check" aria-hidden="true"></i>
+        Submitted!
+    </div>
+  <div class="content">
+    <span class="late">
+        Dec 3 at 11:14pm (late)
+    </span>
+
+    <div>
+      <a href="/courses/357714/assignments/3671057/submissions/936046">
+        Submission Details
+      </a>
+    </div>
+
+        <div>
+          <a href="/courses/357714/assignments/3671057/submissions/936046?download=41163343">
+            Download MatthewCarr_Proj4_1.zip
+          </a>
+        </div>
+        <span class="assignment_presenter_for_submission" style="display: none;">pending_upload</span>
+        <span class="react_pill_container"></span>
+
+    <div class="module">
+          <div>Grade: 86 <span style="font-size: 0.8em;">(100 pts possible)</span></div>
+          <div>Graded Anonymously: no</div>
+
+    </div>
+
+
+    <div class="comments module">
+        <h4>Comments: </h4>
+
+        
+          <div id="comment-7987767" class="comment">
+            readme does not contain description of unit test. The script given for bonus part does not run.
+            <div class="comment_attachments">
+            </div>
+            <div class="signature" style="font-size: 0.8em; text-align: right; color: #888;">
+              Neha Rani, Dec 9 at 10:03pm
+            </div>
+          </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+    <div style="display:none;"><!-- Everything inside of this should always stay hidden -->
+        <div id="page_view_id">3eb201fd-f965-4a8d-b3f1-10565ed084c7</div>
+    </div>
+  <div id='aria_alerts' class='hide-text affix' role="alert" aria-live="assertive"></div>
+  <div id='StudentTray__Container'></div>
+  
+
+<script>
+  INST = {"environment":"production","allowMediaComments":true,"kalturaSettings":{"domain":"nv.instructuremedia.com","resource_domain":"nv.instructuremedia.com","rtmp_domain":"iad.rtmp.instructuremedia.com","partner_id":"9","subpartner_id":"0","player_ui_conf":"0","kcw_ui_conf":"0","upload_ui_conf":"0","max_file_size_bytes":534773760,"do_analytics":false,"hide_rte_button":false,"js_uploader":true},"googleAnalyticsAccount":"UA-9138420-1","disableGooglePreviews":true,"logPageViews":true,"maxVisibleEditorButtons":3,"editorButtons":[{"name":"New York Times","id":13439,"url":"https://www.edu-apps.org/tool_redirect?id=nytimes","icon_url":"https://www.edu-apps.org/tools/nytimes/icon.png","canvas_icon_class":null,"width":690,"height":530},{"name":"Public Resources","id":17316,"url":"https://www.edu-apps.org/lti_public_resources","icon_url":"https://www.edu-apps.org/assets/lti_public_resources/public_resources_icon.png","canvas_icon_class":null,"width":560,"height":600},{"name":"YouTube","id":18259,"url":"https://www.edu-apps.org/lti_public_resources/?tool_id=youtube","icon_url":"https://www.edu-apps.org/assets/lti_public_resources/youtube_icon.png","canvas_icon_class":null,"width":560,"height":600},{"name":"Upload/Embed Image","id":25205,"url":"https://multitool.ciditools.com/cropped/controller.php","icon_url":"https://multitool.ciditools.com/cropped/croppedIcon.png","canvas_icon_class":null,"width":750,"height":600},{"name":"TEDEd","id":29246,"url":"https://www.edu-apps.org/lti_public_resources/?tool_id=youtube_ted_ed","icon_url":"https://www.edu-apps.org/assets/lti_public_resources/ted_ed_icon.png","canvas_icon_class":null,"width":560,"height":600},{"name":"Microsoft Office 365","id":31295,"url":"https://office365-iad-prod.instructure.com/lti/rce-content-item","icon_url":"https://office365-iad-prod.instructure.com/images/office365_icon.png","canvas_icon_class":null,"width":900,"height":600}]};
+  ENV = {"ASSET_HOST":"https://du11hjcvx0uqb.cloudfront.net","active_brand_config_json_url":"https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/44f1e4c93f879f133b9b74c557b56961/variables-750d72b9d3e5d522f965bf904110c132.json","url_to_what_gets_loaded_inside_the_tinymce_editor_css":["https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/44f1e4c93f879f133b9b74c557b56961/variables-750d72b9d3e5d522f965bf904110c132.css","https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/new_styles_normal_contrast/bundles/what_gets_loaded_inside_the_tinymce_editor-53dac18d10.css"],"url_for_high_contrast_tinymce_editor_css":["https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/default/variables-high_contrast-750d72b9d3e5d522f965bf904110c132.css","https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/new_styles_high_contrast/bundles/what_gets_loaded_inside_the_tinymce_editor-b4d65fe883.css"],"current_user_id":"936046","current_user_roles":["user","student","teacher"],"current_user_disabled_inbox":false,"files_domain":"cluster30-files.instructure.com","DOMAIN_ROOT_ACCOUNT_ID":10160000000002010,"k12":false,"use_responsive_layout":false,"help_link_name":"Help","help_link_icon":"help","use_high_contrast":false,"LTI_LAUNCH_FRAME_ALLOWANCES":["geolocation *","microphone *","camera *","midi *","encrypted-media *"],"SETTINGS":{"open_registration":false,"eportfolios_enabled":true,"collapse_global_nav":false,"show_feedback_link":true,"enable_profiles":true},"ARC_RECORDING_FEATURE_ENABLED":true,"current_user":{"id":"936046","display_name":"Matthew Carr","avatar_image_url":"https://ufl.instructure.com/images/thumbnails/27226892/7RrSWEi6AdRHXZWNjLbLgAfbD8KRh10khsBwIZLc","html_url":"https://ufl.instructure.com/about/936046","avatar_is_fallback":false},"page_view_update_url":"/page_views/3eb201fd-f965-4a8d-b3f1-10565ed084c7?page_view_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpIjoiM2ViMjAxZmQtZjk2NS00YThkLWIzZjEtMTA1NjVlZDA4NGM3IiwidSI6MTAxNjAwMDAwMDA5MzYwNDYsImMiOiIyMDE4LTEyLTEyVDIzOjA4OjE5LjU3WiJ9.o6f96Al-pQsOw1Afmfv4pjjHllsVpC9tE3eJPv6o5UU","context_asset_string":"course_357714","ping_url":"https://ufl.instructure.com/api/v1/courses/357714/ping","TIMEZONE":"America/New_York","CONTEXT_TIMEZONE":"America/New_York","LOCALE":"en","BIGEASY_LOCALE":"en_US","FULLCALENDAR_LOCALE":"en","MOMENT_LOCALE":"en","RICH_CONTENT_SERVICE_ENABLED":true,"RICH_CONTENT_APP_HOST":"rich-content-iad.inscloudgate.net","RICH_CONTENT_CDN_HOST":"dvgcns7dz7zc.cloudfront.net/rce_service/versions/","RICH_CONTENT_SKIP_SIDEBAR":null,"JWT":"ZXlKaGJHY2lPaUprYVhJaUxDSmxibU1pT2lKQk1qVTJSME5OSW4wLi5FY3FoTDczQUlJejJnWllXLkNGeHgyVEtEUFpHTXdma3VJOGRMbEpfX0VTNG5IUmdVVjBKVTNrdVgwVkoxUmpOaTkyMmxQSnJkYk9aa3VWM21JQUZoWEYxbTh1YlB4LTNFanRhcWZnTXp2d3dkX1NkMkZ0OW1PVnNKUS1jZ2tWajBoak5uZnpaVkVkbWdaRnVGbXpnV1VESWpJOG5pRi1Pc2RFRlB4WUhRcmtGODg0UVBmcHhjUHdRTHBPc1RnZEpTNWJrSk9uZTRIa3hZbDRkV0NOb2IxaUgwcU1xcVloWDUyY05rRWNjN1lEOXpMOFFKM24zdWRRbEh4SDFUd1A3UWZTUlBPQ1VvajBFX2pXOVJGcm9fMXZDaGJoYWtFNUZWRTVMZXRSbVE1ckJYWTZjdGRONGxFLWh1ZE1kbkVPQmhrNk9ubkVqNVNwVUpyZXdhVjNOOUFzMHNjQ2d1SEpGQmw1eGVlUjdfR0kxTFprTHQzQkhpc0FEZm96RHdjb0h2WEdpdFYwSFI0MXhDM0hEOUJFUmZTeUNXVnRoM2RLNmdsX2FGTC02QmZzVzRoYmJQY3hRUGFXOTRlR1BlcXdHdWp3STkzbi1HTjNxdENsNGFBc0kyaGlkYWVyTHJHTGtWNUtEMVpTRjhmNTczT215d1p0ZnV0MGNtTF9wUmMzeEJWcUpZZHFrT0lqamQtOGJzT2xOQnJiUl82b3FkaTdZeDlRaHAzQldiRERjLTJkMlppMm10dGhITXExWENIYk5fZ2ZYb000S2MxRTBqQjBJRjJ2Z25pei1VeEZEd0Z1cFVrWnQ4djZsMy1QT0dhbG9ZTE1PNkNNaDBIUHNIazhKUXlfY1YzZUpXaTl1Z1FLenBqSTh4SUU4a0szcGJMWGFOeUFvZkhzYTBUS0tXYWNva0pEM1JjS0xFWDhGeFZtYnQ1bWFsVWVZTndXRVo0cjhRRFVPTEVDRWt5U1ZMQlJVZWY5dll5OGNyY0hiUGFUWlFXU18wMV9SWlFPMXZnaVYtenpFTER4UGZZOFRTZF9VcVh4Y2ZFTkUwZm5QOEt4ZVlxWmVtaEtiMTRhRWdVTUxudjRFYWZqXzRwZy5OSjFWWmUwekcwRnRNdERsSF83N0JB","RICH_CONTENT_CAN_UPLOAD_FILES":false,"RICH_CONTENT_FILES_TAB_DISABLED":false,"ROOT_OUTCOME_GROUP":{"id":"302178","title":"COP5615: Dist Oper Sys Princ, Fall 2018","vendor_guid":null,"url":"/api/v1/courses/357714/outcome_groups/302178","subgroups_url":"/api/v1/courses/357714/outcome_groups/302178/subgroups","outcomes_url":"/api/v1/courses/357714/outcome_groups/302178/outcomes","can_edit":false,"import_url":"/api/v1/courses/357714/outcome_groups/302178/import","context_id":"357714","context_type":"Course","description":null},"COURSE_ID":357714,"ASSIGNMENT_ID":3671057,"EXTERNAL_TOOLS":[{"id":"31295","domain":"office365-iad-prod.instructure.com","url":"https://office365-iad-prod.instructure.com/lti/course-navigation","consumer_key":"4f1d5910-1aea-4c5d-bd75-3d3fe1aef4f3","name":"Microsoft Office 365","description":"Allows you to pull in documents from Office 365 to Canvas","created_at":"2017-02-17T15:29:00Z","updated_at":"2018-03-20T21:53:19Z","privacy_level":"name_only","custom_fields":{"account_id":"$Canvas.account.id","assignment_title":"$Canvas.assignment.title","base_url":"$Canvas.api.baseUrl","collaboration_members_url":"$Canvas.api.collaborationMembers.url","course_id":"$Canvas.course.id","domain":"$Canvas.api.domain","group_context_ids":"$Canvas.group.contextIds","masquerading_user_id":"$Canvas.masqueradingUser.userId","membership_service_url":"$ToolProxyBinding.memberships.url","time_zone":"$Person.address.timezone","user_id":"$Canvas.user.id","previous_context_ids":"$Canvas.course.previousContextIds","previous_context_ids_recursive":"$Canvas.course.previousContextIds.recursive"},"workflow_state":"name_only","vendor_help_link":null,"account_navigation":null,"similarity_detection":null,"assignment_edit":null,"assignment_menu":null,"assignment_selection":{"message_type":"ContentItemSelectionRequest","text":"Office 365 Cloud Assignment","url":"https://office365-iad-prod.instructure.com/lti/cloud-assignment-template","label":"Office 365 Cloud Assignment","selection_width":800,"selection_height":400,"icon_url":"https://office365-iad-prod.instructure.com/images/office365_icon.png"},"assignment_view":null,"collaboration":{"canvas_icon_class":"icon-lti","icon_url":"https://office365-iad-prod.instructure.com/images/office365_icon.png","message_type":"ContentItemSelectionRequest","text":"Office 365","url":"https://office365-iad-prod.instructure.com/lti/collaboration-content-item","label":"Office 365","selection_width":800,"selection_height":400},"course_assignments_menu":null,"course_home_sub_navigation":null,"course_navigation":{"text":"Office 365","url":"https://office365-iad-prod.instructure.com/lti/course-navigation","label":"Office 365","selection_width":800,"selection_height":400,"icon_url":"https://office365-iad-prod.instructure.com/images/office365_icon.png"},"course_settings_sub_navigation":null,"discussion_topic_menu":null,"editor_button":{"icon_url":"https://office365-iad-prod.instructure.com/images/office365_icon.png","message_type":"ContentItemSelectionRequest","selection_height":600,"selection_width":900,"url":"https://office365-iad-prod.instructure.com/lti/rce-content-item","label":"Microsoft Office 365"},"file_menu":null,"global_navigation":null,"homework_submission":{"canvas_icon_class":"icon-lti","icon_url":"https://office365-iad-prod.instructure.com/images/office365_icon.png","message_type":"ContentItemSelectionRequest","text":"Office 365","url":"https://office365-iad-prod.instructure.com/lti/homework-submission-content-item","label":"Office 365","selection_width":800,"selection_height":400},"link_selection":{"enabled":"true","message_type":"ContentItemSelectionRequest","selection_height":600,"selection_width":900,"text":"Office 365","url":"https://office365-iad-prod.instructure.com/lti/module-content-item","label":"Office 365","icon_url":"https://office365-iad-prod.instructure.com/images/office365_icon.png"},"migration_selection":null,"module_menu":null,"post_grades":null,"quiz_menu":null,"resource_selection":null,"tool_configuration":null,"user_navigation":null,"wiki_page_menu":null,"icon_url":"https://office365-iad-prod.instructure.com/images/office365_icon.png","not_selectable":false},{"id":"57674","domain":"app.tophat.com","url":"https://app.tophat.com/lti/launch/","consumer_key":"university-of-florida","name":"Top Hat","description":"Top Hat is a classroom engagement tool that supports interactive lectures, providing the faculty with immediate feedback on student understanding. It is similar to other classroom response systems (e.g. iclickers) with more enhanced content options.","created_at":"2018-03-28T13:44:06Z","updated_at":"2018-03-28T13:44:06Z","privacy_level":"public","custom_fields":{"course_id":"$Canvas.course.id","user_id":"$User.id"},"workflow_state":"public","vendor_help_link":null,"account_navigation":null,"similarity_detection":null,"assignment_edit":null,"assignment_menu":null,"assignment_selection":null,"assignment_view":null,"collaboration":null,"course_assignments_menu":null,"course_home_sub_navigation":null,"course_navigation":null,"course_settings_sub_navigation":null,"discussion_topic_menu":null,"editor_button":null,"file_menu":null,"global_navigation":null,"homework_submission":{"enabled":"true","icon_url":"https://tophat.com/wp-content/themes/tophat/dist/images/tophat-footer-logo_9fe51db3.svg","url":"https://app.tophat.com/lti/launch/","label":"Top Hat","selection_width":800,"selection_height":400},"link_selection":null,"migration_selection":null,"module_menu":null,"post_grades":null,"quiz_menu":null,"resource_selection":null,"tool_configuration":null,"user_navigation":null,"wiki_page_menu":null,"icon_url":"https://tophat.com/wp-content/themes/tophat/dist/images/tophat-footer-logo_9fe51db3.svg","not_selectable":false}],"EULA_URL":null,"PERMISSIONS":{"context":{"read_as_admin":false,"manage_assignments":false},"assignment":{"update":false,"submit":true}},"SUBMIT_ASSIGNMENT":{"ALLOWED_EXTENSIONS":[],"ID":3671057,"GROUP_ID_FOR_USER":null},"badge_counts":{"submissions":0},"notices":[]};
+</script>
+
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/webpack-production/navigation_header.bundle-d08c999812.js" defer="defer"></script>
+<script src="https://instructure-uploads.s3.amazonaws.com/account_10160000000002010/attachments/33816949/UF.js" defer="defer"></script>
+<script src="https://instructure-uploads.s3.amazonaws.com/account_10160000000002010/attachments/33806376/eng.js" defer="defer"></script>
+
+</div> <!-- #application -->
+</body>
+</html>

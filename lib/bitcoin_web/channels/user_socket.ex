@@ -3,6 +3,7 @@ defmodule BitcoinWeb.UserSocket do
 
   ## Channels
   # channel "room:*", BitcoinWeb.RoomChannel
+  channel "bitcoin:*", BitcoinWeb.BitcoinChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After

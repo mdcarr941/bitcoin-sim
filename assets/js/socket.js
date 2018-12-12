@@ -55,7 +55,28 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("topic:subtopic", {})
+let channel = socket.channel("bitcoin:sim", {})
+let numNodesInput = document.getElementById("num-nodes-input");
+let startBtn = document.getElementById("start-btn")
+let stopBtn = document.getElementById("stop-btn")
+
+// Listen for startBtc click.
+startBtn.addEventListener("click", event => {
+  let numNodes
+  if ((numNodes = parseInt(numNodesInput.value)) && numNodes > 0) {
+    channel.push("start_sim", {num_nodes: numNodes})
+    startBtn.style.display = "none"
+    stopBtn.style.display = "block"
+  }
+})
+
+// Listen for stopBtc click.
+stopBtn.addEventListener("click", event => {
+  channel.push("stop_sim")
+  stopBtn.style.display = "none"
+  startBtn.style.display = "block"
+})
+
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })

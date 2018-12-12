@@ -1400,6 +1400,9 @@ defmodule Bitcoin.BtcNode do
     end
   end
 
+  @spec stop(pid) :: :ok
+  def stop(pid), do: GenServer.stop(pid)
+
   @spec get_state(pid) :: BtcNodeState.t
   def get_state(pid), do: GenServer.call(pid, {:get_state})
 
@@ -1554,6 +1557,12 @@ defmodule Bitcoin.Network do
   @spec handle_cast({:stop_mining}, NetworkState.t) :: {:noreply, NetworkState.t}
   def handle_cast({:stop_mining}, state), do: {:noreply, stop_mining(state)}
 
+  @spec handle_cast({:stop}, NetworkState.t) :: {:noreply, NetworkState.t}
+  def handle_cast({:stop}, state) do
+    Enum.each(Map.keys(state.states), fn(pid) -> BtcNode.stop(pid) end)
+    {:stop, :normal, state}
+  end
+
   ## Client Functions
 
   @spec start_link(non_neg_integer) :: pid
@@ -1564,7 +1573,7 @@ defmodule Bitcoin.Network do
 
   @spec stop() :: :ok
   def stop() do
-    GenServer.stop(__MODULE__)
+    GenServer.cast(__MODULE__, {:stop})
   end
 
   @spec node_state_change(BtcNodeState.t) :: :ok
