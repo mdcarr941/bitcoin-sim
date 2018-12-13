@@ -4,4 +4,9 @@
     <input type="button" id="start-btn" value="Start"/>
     <input style="display:none;" type="button" id="stop-btn" value="Stop"/>
 </div>
-<!--script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/bitcoin.js") %>"/></script-->
+<div style="display:none;" id="display">
+    <label for="min-length-div">Min Chain Length:</label>
+    <div id="min-length-div"></div>
+    <label for="max-length-div">Max Chain Length:</label>
+    <div id="max-length-div"></div>
+</div>

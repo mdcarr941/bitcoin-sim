@@ -17,8 +17,8 @@
           </ul>
         </nav-->
         <div>
-          <img src="<%= Routes.static_path(@conn, "/images/BC_Logotype.png") %>" width="306px" height="64px" alt="Bitcoin"/>
           <span style="font-size:350%;">Sim</span>
+          <img src="<%= Routes.static_path(@conn, "/images/BC_Logotype.png") %>" width="306px" height="64px" alt="Bitcoin"/>
         </div>
         <!--a href="http://phoenixframework.org/" class="phx-logo">
           <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>

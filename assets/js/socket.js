@@ -56,9 +56,13 @@ socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
 let channel = socket.channel("bitcoin:sim", {})
-let numNodesInput = document.getElementById("num-nodes-input");
+
+let numNodesInput = document.getElementById("num-nodes-input")
 let startBtn = document.getElementById("start-btn")
 let stopBtn = document.getElementById("stop-btn")
+let display = document.getElementById("display")
+let minLengthDiv = document.getElementById("min-length-div")
+let maxLengthDiv = document.getElementById("max-length-div")
 
 // Listen for startBtc click.
 startBtn.addEventListener("click", event => {
@@ -67,6 +71,9 @@ startBtn.addEventListener("click", event => {
     channel.push("start_sim", {num_nodes: numNodes})
     startBtn.style.display = "none"
     stopBtn.style.display = "block"
+    minLengthDiv.innerText = ""
+    maxLengthDiv.innerText = ""
+    display.style.display = "block"
   }
 })
 
@@ -75,6 +82,14 @@ stopBtn.addEventListener("click", event => {
   channel.push("stop_sim")
   stopBtn.style.display = "none"
   startBtn.style.display = "block"
+  display.style.display = "none"
+})
+
+// Update the page when a message is received.
+
+channel.on("chain_lengths", payload => {
+  minLengthDiv.innerText = payload.min
+  maxLengthDiv.innerText = payload.max
 })
 
 channel.join()
