@@ -8,6 +8,7 @@ alias Bitcoin.BlockHeader
 alias Bitcoin.Block
 alias Bitcoin.Crypto
 alias Bitcoin.Script
+alias Bitcoin.BtcNode
 alias Bitcoin.Network
 
 defmodule Bitcoin.Tests.General do
@@ -83,6 +84,16 @@ defmodule Bitcoin.Tests.General do
     )
     {coinbase, <<>>} = CoinBaseIn.deserialize(bin)
     assert CoinBaseIn.serialize(coinbase) == bin
+  end
+
+  test "BtcNode.make_block_locator" do
+    assert BtcNode.make_block_locator(Enum.to_list(1..11)) == Enum.to_list(11..1)
+    assert BtcNode.make_block_locator(Enum.to_list(1..13)) == Enum.to_list(13..4) ++ [2, 1]
+  end
+
+  test "BtcNode.find_index" do
+    assert BtcNode.find_index([1, 2, 3], [2, 3]) == 1
+    assert BtcNode.find_index(Enum.to_list(0..99), [100, -1, 55, 0]) == 55
   end
 end
 

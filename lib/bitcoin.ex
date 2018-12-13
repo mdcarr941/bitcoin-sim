@@ -1285,12 +1285,19 @@ defmodule Bitcoin.BtcNode do
   end
 
   @doc "Cast a message to every pid in `state.peers` except `except`."
-  @spec cast_all(BtcNodeState.t, pid | nil, term) :: {:ok, pid}
+  @spec cast_all(BtcNodeState.t, pid | nil, term) :: :ok
   def cast_all(state, except, msg) do
     targets = Enum.filter(state.peers, fn(peer) -> peer != except end)
     Enum.each(targets, fn(peer) ->
       GenServer.cast(peer, msg)
     end)
+  end
+
+  @doc "Broadcast `block` to `state.peers`."
+  @spec broadcast_block(BtcNodeState.t, Block.t) :: BtcNodeState.t
+  def broadcast_block(state, block) do
+    cast_all(state, nil, {:block, block, self()})
+    state
   end
 
   @doc "Verify `tran` and enqueue it if it is valid and not already enqueued."
@@ -1315,15 +1322,55 @@ defmodule Bitcoin.BtcNode do
   @spec block_valid?(BtcNodeState.t, Block.t) :: boolean
   def block_valid?(state, block), do: Block.valid?(List.last(state.chain), block)
 
-  def process_block(state, block, do_cast \\ false) do
-    if block_valid?(state, block) do
-      if do_cast do
-        cast_all(state, nil, {:block, block})
-      end
-      add_block(state, block)
+  @doc "Find the index of `block.header.hash_prev_block` in `chain`. Returns `nil` if not found."
+  @spec find_parent_index([Block.t], Block.t) :: non_neg_integer
+  def find_parent_index(chain, block) do
+    prev_hash = block.header.hash_prev_block
+    Enum.find_index(chain, fn(other_block) ->
+      Block.hash(other_block) == prev_hash
+    end)
+  end
+
+  @spec pow(number, number) :: integer
+  def pow(base, exponent), do: :math.pow(base, exponent) |> round
+
+  @spec make_block_locator([Crypto.hash_t]) :: [Crypto.hash_t]
+  def make_block_locator(chain) do
+    chain_len = length(chain)
+    locator =
+      List.foldr(Enum.to_list(1..chain_len-1), [], fn(index, locator) ->
+        len = length(locator)
+        if len < 10 or pow(2, len - 9) + 10 == chain_len - index do
+          locator ++ [Enum.at(chain, index)]
+        else
+          locator
+        end
+      end)
+    locator ++ [hd(chain)]
+  end
+
+  @doc "Find the index of the first matching member of `locator` in `hashes`."
+  @spec find_index([Crypto.hash_t], [Crypto.hash_t]) :: non_neg_integer | nil
+  def find_index(hashes, locator) do
+    if length(locator) == 0 do
+      nil
     else
-      state
+      [hash | locator] = locator
+      index = Enum.find_index(hashes, fn(other_hash) -> other_hash == hash end)
+      if index == nil do
+        find_index(hashes, locator)
+      else
+        index
+      end
     end
+  end
+
+  @doc "Determine if `chain` is a valid block chain."
+  @spec chain_valid?([Block.t]) :: boolean
+  def chain_valid?(chain) do
+    Enum.all?(1..length(chain)-1, fn(index) ->
+      Block.valid?(Enum.at(chain, index-1), Enum.at(chain, index))
+    end)
   end
 
   ## Server Functions
@@ -1353,7 +1400,7 @@ defmodule Bitcoin.BtcNode do
   def handle_cast({:block_mined, block}, state) do
     state =
       if block_valid?(state, block) do
-        cast_all(state, nil, {:block, block})
+        broadcast_block(state, block)
         add_block(state, block)
       else
         new_block(state) |> start_miner |> update_index(block)
@@ -1362,10 +1409,53 @@ defmodule Bitcoin.BtcNode do
   end
 
   @spec handle_cast({:block, Block.t}, BtcNodeState.t) :: {:noreply, BtcNodeState.t}
-  def handle_cast({:block, block}, state) do
+  def handle_cast({:block, block, from}, state) do
     state =
-      if block_valid?(state, block) do
-        add_block(state, block)
+      if Block.hash(List.last(state.chain)) == block.header.hash_prev_block do
+        # The block points to the end of my chain.
+        if block_valid?(state, block) do
+          # The block is valid, add it to my chain.
+          add_block(state, block)
+        else
+          # The block is invalid, this is a bug.
+          throw("I can't continue, somebody sent me an invalid block!")
+        end
+      else
+        # We've detected a fork
+        if parent_index = find_parent_index(state.chain, block) do
+          # Our chain is longer. Send blocks to the node that sent this message.
+          GenServer.cast(from, {:send_blocks, Enum.slice(state.chain, parent_index..length(state.chain))})
+          state
+        else
+          # This block is an orphan. The sender's chain could be longer, so request blocks from them.
+          GenServer.cast(from, {:get_blocks, make_block_locator(state.chain), self()})
+          state
+        end
+      end
+    {:noreply, state |> notify_network}
+  end
+
+  @spec handle_cast({:get_blocks, [Crypto.hash_t], pid}, BtcNodeState.t) :: {:noreply, BtcNodeState.t}
+  def handle_cast({:get_blocks, block_locator, from}, state) do
+    hashes = Enum.map(state.chain, &Block.hash/1)
+    locator = Enum.map(block_locator, &Block.hash/1)
+    match_index = find_index(hashes, locator)
+    GenServer.cast(from, {:send_blocks, Enum.slice(state.chain, match_index+1..length(state.chain))})
+    {:noreply, state}
+  end
+
+  @spec handle_cast({:send_blocks, [Block.t]}, BtcNodeState.t) :: {:noreply, BtcNodeState.t}
+  def handle_cast({:send_blocks, blocks}, state) do
+    parent_index = find_parent_index(state.chain, hd(blocks))
+    proposed_chain = Enum.slice(state.chain, 0..parent_index) ++ blocks
+    state =
+      if length(proposed_chain) > length(state.chain) do
+        if chain_valid?(proposed_chain) do
+          Map.put(state, :chain, proposed_chain)
+        else
+          # Throw an exception to signal that a bug was detected.
+          throw("I can't live in a world where the longest chain is invalid!")
+        end
       else
         state
       end
@@ -1380,6 +1470,12 @@ defmodule Bitcoin.BtcNode do
 
   @spec handle_cast({:stop_mining}, BtcNodeState.t) :: {:noreply, BtcNodeState.t}
   def handle_cast({:stop_mining}, state), do: {:noreply, interrupt_miner(state)}
+
+  @spec handle_cast({:stop}, BtcNodeState.t) :: {:stop, :normal, BtcNodeState.t}
+  def handle_cast({:stop}, state) do
+    stop_miner(state)
+    {:stop, :normal, state}
+  end
 
   ## Client Functions
 
@@ -1401,7 +1497,9 @@ defmodule Bitcoin.BtcNode do
   end
 
   @spec stop(pid) :: :ok
-  def stop(pid), do: GenServer.stop(pid)
+  def stop(pid) do
+    GenServer.cast(pid, {:stop})
+  end
 
   @spec get_state(pid) :: BtcNodeState.t
   def get_state(pid), do: GenServer.call(pid, {:get_state})
