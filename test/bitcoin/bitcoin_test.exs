@@ -428,7 +428,6 @@ defmodule Bitcoin.Tests.SingleNode do
 
     coinbase = hd(block.transactions)
     prev_out = hd(coinbase.tx_out)
-    prev_pk_script = prev_out.pk_script
 
     value = prev_out.value
     payment = round(0.4 * value)
@@ -436,7 +435,7 @@ defmodule Bitcoin.Tests.SingleNode do
     change = value - payment - transaction_fee
     outputs = [{payment, new_pub_key}, {change, pub_key}]
 
-    tran = Transaction.new_from_pub_keys(Transaction.hash(coinbase), 0, prev_pk_script, outputs, priv_key)
+    tran = Transaction.new_from_tx(coinbase, 0, outputs, priv_key)
     assert Network.submit_tx(tran) # The network returns true if the transaction is accepted.
   end
 end
@@ -493,7 +492,7 @@ defmodule Bitcoin.Tests.NodeSync do
       end
     end)
 
-    Process.sleep(175)
+    Process.sleep(250)
     chains = Network.onetime_callback(fn(net_state) ->
       Enum.map(Map.values(net_state.states), fn(node_state) -> node_state.chain end)
     end)

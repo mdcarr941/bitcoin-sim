@@ -503,6 +503,14 @@ defmodule Bitcoin.Transaction do
   @spec new_from_pub_keys(Crypto.hash_t, non_neg_integer, Script.t, [{non_neg_integer, Crypto.pub_key_t}], Crypto.priv_key_t) :: Transaction.t
   def new_from_pub_keys(hash, index, script, outputs, priv_key), do: new_from_pub_keys([{hash, index, script}], outputs, priv_key)
 
+  @doc "Spend the output `out_index` in `prev_tran` to `outputs`."
+  @spec new_from_tx(Transaction.t, non_neg_integer, [{non_neg_integer, Crypto.pub_key_t}], Crypto.priv_key_t) :: Transaction.t
+  def new_from_tx(prev_tran, out_index, outputs, priv_key) do
+    prev_out = Enum.at(prev_tran.tx_out, out_index)
+    prev_pk_script = prev_out.pk_script
+    new_from_pub_keys(Transaction.hash(prev_tran), out_index, prev_pk_script, outputs, priv_key)
+  end
+
   @spec to_pairs(Transaction.t) :: Serialize.binary_pairs_t
   def to_pairs(trans) do
     tx_input =
@@ -1128,7 +1136,7 @@ defmodule Bitcoin.BtcNodeState do
   @genesis_block Block.genesis_block()
 
   @moduledoc "The state of a node in the BTC network."
-  defstruct peers: [], chain: [@genesis_block], index: %{}, cash_index: %{}, current_block: nil,
+  defstruct peers: [], peer_pub_keys: %{}, chain: [@genesis_block], index: %{}, cash_index: %{}, current_block: nil,
     pub_key: nil, priv_key: nil,
     target: BlockHeader.to_target_threshold(BlockHeader.n_bits()), miner: nil, transaction_q: []
 
@@ -1137,6 +1145,7 @@ defmodule Bitcoin.BtcNodeState do
 
   @type t :: %BtcNodeState{
     peers: [pid], # The peers this node knows about.
+    peer_pub_keys: %{pid => Crypto.pub_key_t},
     chain: [Block.t], # The block chain.
     # An index of unspent transaction outputs. The keys are {tx hash, output index}.
     index: index_t,
@@ -1452,6 +1461,47 @@ defmodule Bitcoin.BtcNode do
     end)
   end
 
+  @spec get_pub_key(pid) :: Crypto.pub_key_t
+  def get_pub_key(pid), do: GenServer.call(pid, {:get_pub_key})
+
+  @spec get_pub_key(BtcNodeState.t, pid) :: {BtcNodeState.t, Crypto.pub_key_t}
+  def get_pub_key(state, target) do
+    if pub_key = Map.get(state.peer_pub_keys, target) do
+      {state, pub_key}
+    else
+      pub_key = get_pub_key(target)
+      state = Map.update!(state, :peer_pub_keys, fn(peer_pub_keys) ->
+        Map.put(peer_pub_keys, target, pub_key)
+      end)
+      {state, pub_key}
+    end
+  end
+
+  @transaction_fee 50
+
+  @spec send_btc(BtcNodeState.t, Block.t) :: BtcNodeState.t
+  def send_btc(state, block) do
+    if length(state.peers) > 0 do
+      target = Enum.random(state.peers)
+      {state, pub_key} = get_pub_key(state, target)
+
+      coinbase = hd(block.transactions)
+      prev_out = hd(coinbase.tx_out)
+
+      value = prev_out.value
+      payment = round(0.4 * value)
+      change = value - payment - @transaction_fee
+      outputs = [{payment, pub_key}, {change, state.pub_key}]
+
+      tran = Transaction.new_from_tx(coinbase, 0, outputs, state.priv_key)
+      submit_tx(target, tran)
+
+      state
+    else
+      state
+    end
+  end
+
   ## Server Functions
 
   @spec init(any) :: {:ok, BtcNodeState.t}
@@ -1459,6 +1509,9 @@ defmodule Bitcoin.BtcNode do
 
   @spec handle_call({:get_state}, GenServer.from, BtcNodeState.t) :: {:reply, BtcNodeState.t, BtcNodeState.t}
   def handle_call({:get_state}, _, state), do: {:reply, state, state}
+
+  @spec handle_call({:get_pub_key}, GenServer.from, BtcNodeState.t) :: {:reply, Crypto.pub_key_t, BtcNodeState.t}
+  def handle_call({:get_pub_key}, _, state), do: {:reply, state.pub_key, state}
 
   @spec handle_call({:submit_tx, Transaction.t}, GenServer.from, BtcNodeState.t) :: {:reply, boolean, BtcNodeState.t}
   def handle_call({:submit_tx, tran}, from, state) do
@@ -1480,7 +1533,9 @@ defmodule Bitcoin.BtcNode do
     state =
       if block_valid?(state, block) do
         broadcast_block(state, block)
+        # Add the block to our chain then send BTC to a random peer.
         add_block(state, block)
+        |> send_btc(block)
       else
         new_block(state) |> start_miner |> update_index(block)
       end
@@ -1506,7 +1561,7 @@ defmodule Bitcoin.BtcNode do
           GenServer.cast(from, {:send_blocks, Enum.slice(state.chain, parent_index..length(state.chain))})
           state
         else
-          # This block is an orphan. The sender's chain could be longer, so request blocks from them.
+          # This block is an orphan. The sender'BtcNodeState.thain could be longer, so request blocks from them.
           GenServer.cast(from, {:get_blocks, make_block_locator(state.chain), self()})
           state
         end
