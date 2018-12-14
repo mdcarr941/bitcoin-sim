@@ -7,6 +7,8 @@
 // Pass the token on params as below. Or remove it
 // from the params if you are not using authentication.
 import {Socket} from "phoenix"
+// Import the elliptic pacakge so we can do ECDSA.
+import ellipticjs from '../node_modules/elliptic'
 
 let socket = new Socket("/socket", {params: {token: window.userToken}})
 
@@ -54,15 +56,13 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 // Finally, connect to the socket:
 socket.connect()
 
-// Now that you are connected, you can join channels with a topic:
+// Join the bitcoin:sim topic.
 let channel = socket.channel("bitcoin:sim", {})
 
-let numNodesInput = document.getElementById("num-nodes-input")
-let startBtn = document.getElementById("start-btn")
-let stopBtn = document.getElementById("stop-btn")
-let display = document.getElementById("display")
-let minLengthDiv = document.getElementById("min-length-div")
-let maxLengthDiv = document.getElementById("max-length-div")
+const numNodesInput = document.getElementById("num-nodes-input")
+const startBtn = document.getElementById("start-btn")
+const stopBtn = document.getElementById("stop-btn")
+const display = document.getElementById("display")
 
 // Listen for startBtc click.
 startBtn.addEventListener("click", event => {
@@ -70,21 +70,33 @@ startBtn.addEventListener("click", event => {
   if ((numNodes = parseInt(numNodesInput.value)) && numNodes > 0) {
     channel.push("start_sim", {num_nodes: numNodes})
     startBtn.style.display = "none"
-    stopBtn.style.display = "block"
-    minLengthDiv.innerText = ""
-    maxLengthDiv.innerText = ""
+    stopBtn.style.display = "inline"
     display.style.display = "block"
   }
 })
+
+// Remove all children of a node.
+function removeAllChildren(node) {
+  while (node.firstChild) {
+    node.removeChild(node.firstChild)
+  }
+}
+
+let nodePidSelectInitialized = false
 
 // Listen for stopBtc click.
 stopBtn.addEventListener("click", event => {
   channel.push("stop_sim")
   stopBtn.style.display = "none"
-  startBtn.style.display = "block"
+  startBtn.style.display = "inline"
   display.style.display = "none"
+  removeAllChildren(nodePidsSelect)
+  nodePidSelectInitialized = false
 })
 
+// Update on chain_length message.
+let minLengthDiv = document.getElementById("min-length-div")
+let maxLengthDiv = document.getElementById("max-length-div")
 channel.on("chain_lengths", payload => {
   minLengthDiv.innerText = payload.min
   maxLengthDiv.innerText = payload.max
@@ -127,24 +139,35 @@ const nodeCashChart = new Chart(document.getElementById("node-cash-chart"), {
 
 const pidRgx = /<([\d\.]+)>/
 const totalBtcDiv = document.getElementById("total-btc-div")
+const nodePidsSelect = document.getElementById("node-pids")
 
 channel.on("node_cash", payload => {
-  let totalBtc = 0, btc = 0 
-  const labels = []
-  const data = []
+  let totalBtc = 0, btc = 0, option
+  const labels = [], data = []
   for (let key in payload) {
     if (payload.hasOwnProperty(key)) {
-      let match
+      let match, keyDisplay
       if (match = pidRgx.exec(key)) {
-        labels.push(match[1])
+        keyDisplay = match[1]
       } else {
-        labels.push("???")
+        keyDisplay = key
       }
+      labels.push(keyDisplay)
+
       btc = payload[key]/100000000
       totalBtc += btc
       data.push(btc)
+
+      // Fill the node pid select element if it doesn't have any elements in it.
+      if (!nodePidSelectInitialized) {
+        option = document.createElement("option")
+        option.value = key
+        option.innerText = keyDisplay
+        nodePidsSelect.appendChild(option)
+      }
     }
   }
+  nodePidSelectInitialized = true
   nodeCashChart.data.labels = labels
   nodeCashChart.data.datasets[0].data = data
   nodeCashChart.data.datasets[0].backgroundColor = new Array(data.length).fill(backgroundColor)
@@ -153,6 +176,46 @@ channel.on("node_cash", payload => {
 
   totalBtcDiv.innerText = totalBtc
 })
+
+// The pause and resume buttons.
+const pauseBtn = document.getElementById("pause-btn")
+const resumeBtn = document.getElementById("resume-btn")
+pauseBtn.addEventListener("click", event => {
+  channel.push("stop_mining")
+  pauseBtn.style.display = "none"
+  resumeBtn.style.display = "inline"
+})
+resumeBtn.addEventListener("click", event => {
+  channel.push("start_mining")
+  resumeBtn.style.display = "none"
+  pauseBtn.style.display = "inline"
+})
+
+// Do transaction signing.
+const ec = new ellipticjs.ec('secp256k1');
+const currentPrivKeyNodeDiv = document.getElementById("current-priv-key-node")
+
+// The get private key button.
+let privKey, privKeyPid
+document.getElementById("get-priv-key-btn").addEventListener("click", event => {
+  privKeyPid = nodePidsSelect.value
+  channel.push("get_priv_key", {"node_pid": privKeyPid})
+    .receive("ok", privKeyHex => {
+      console.log("privKeyHex is", privKeyHex)
+      privKey = ec.keyPair(privKeyHex)
+      currentPrivKeyNodeDiv.innerText = privKeyPid
+    })
+})
+
+const sendAmountInput = document.getElementById("send-amount")
+// document.getElementById("send-btc-btn").addEventListener("click", event => {
+//   let amount = sendAmountInput.value, nodePid = nodePidsSelect.value
+//   channel.push("get_signing_input", {"amount": amount, "pid_to": nodePid, "pid_from": privKeyPid})
+//     .receive("ok", resp => {
+//       // do signing
+//       // send signed transaction to server
+//     })
+// })
 
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })

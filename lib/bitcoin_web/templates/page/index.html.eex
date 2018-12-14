@@ -3,6 +3,8 @@
     <input type="number" id="num-nodes-input" />
     <input type="button" id="start-btn" value="Start"/>
     <input style="display:none;" type="button" id="stop-btn" value="Stop"/>
+    <input style="display:none;" type="button" id="pause-btn" value="Pause"/>
+    <input style="display:none;" type="button" id="resume-btn" value="Resume"/>
 </div>
 <div style="display:none;" id="display">
     <label for="min-length-div">Min Chain Length:</label>
@@ -12,4 +14,11 @@
     <label for="total-btc-div">Total Btc:</label>
     <div id="total-btc-div"></div>
     <canvas width="100%" id="node-cash-chart"></canvas>
+    <select id="node-pids"></select>
+    <input type="button" id="get-priv-key-btn" value="Get Private Key"/>
+    <!--input type="button" id="send-btc-btn" value="Send BTC"/-->
+    <!--label for="send-amount">Amount to send:</label-->
+    <!--input style="display:inline;" type="number" id="send-amount"/-->
+    <label for="current-priv-key-node">Private Key Loaded From:</label>
+    <div id="current-priv-key-node">None</div>
 </div>

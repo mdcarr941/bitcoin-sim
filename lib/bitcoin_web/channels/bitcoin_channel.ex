@@ -2,6 +2,8 @@ defmodule BitcoinWeb.BitcoinChannel do
   use Phoenix.Channel
   alias Bitcoin.Network
   alias Bitcoin.Crypto
+  alias Bitcoin.BtcNode
+  alias Bitcoin.Serialize
 
   @doc "No authentication, everyone can join!"
   def join(_topic, _message, socket), do: {:ok, socket}
@@ -22,6 +24,11 @@ defmodule BitcoinWeb.BitcoinChannel do
     end)
     broadcast!(socket, "node_cash", node_cash)
     :nosend
+  end
+
+  @spec pid_from_string(String.t) :: pid
+  def pid_from_string("#PID" <> string) do
+    :erlang.binary_to_list(string) |> :erlang.list_to_pid
   end
 
   def handle_in("start_sim", %{"num_nodes" => num_nodes}, socket) when is_integer(num_nodes) and num_nodes > 0 do
@@ -51,4 +58,36 @@ defmodule BitcoinWeb.BitcoinChannel do
     end)
     {:noreply, socket}
   end
+
+  def handle_in("get_priv_key", %{"node_pid" => node_pid}, socket) do
+    if Map.get(socket.assigns, :network_running) do
+      pid = pid_from_string(node_pid)
+      node_state = BtcNode.get_state(pid)
+      {:reply, {:ok, %{"priv_key" => Serialize.to_hex(node_state.priv_key)}}, socket}
+    else
+      {:reply, :not_running, socket}
+    end
+  end
+
+  def handle_in("stop_mining", _payload, socket) do
+    if Map.get(socket.assigns, :network_running) do
+      Network.stop_mining()
+    end
+    {:noreply, socket}
+  end
+
+  def handle_in("start_mining", _payload, socket) do
+    if Map.get(socket.assigns, :network_running) do
+      Network.start_mining()
+    end
+    {:noreply, socket}
+  end
+
+  # def handle_in("get_signing_input", payload, socket) do
+  #   if Map.get(socket.assigns, :network_running) do
+  #     {:reply, Network.get_signing_input(payload), socket}
+  #   else
+  #     {:reply, :not_running, socket}
+  #   end
+  # end
 end

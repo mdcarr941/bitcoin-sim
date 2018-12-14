@@ -84,4 +84,31 @@ defmodule Bitcoin.Tests.Helpers do
 
     {trans, prev_pk_script, priv_key}
   end
+
+  @doc "Print the contents of `chains` to the console."
+  @spec print_chains([[Block.t]]) :: :ok
+  def print_chains(chains) do
+    Enum.zip(chains, 0..length(chains)-1)
+    |> Enum.each(fn({chain, index}) ->
+      Enum.map(chain, fn(block) -> Block.hash(block) |> Serialize.to_hex end)
+      |> IO.inspect(label: "chain " <> Integer.to_string(index))
+    end)
+  end
+
+  @spec hash_chains([[Block.t]]) :: [[Crypto.hash_t]]
+  def hash_chains(chains) do
+    Enum.map(chains, fn(chain) ->
+      Enum.map(chain, fn(block) -> Block.hash(block) end)
+    end)
+  end
+
+  @spec common_chain([[Block.t]]) :: [Crypto.hash_t]
+  def common_chain(chains) do
+    hash_chains(chains)
+    |> Enum.zip
+    |> Enum.map(fn(tuple) -> Tuple.to_list(tuple) end)
+    |> Enum.map(fn(chain_slice) -> Enum.uniq(chain_slice) end)
+    |> Enum.take_while(fn(chain_slice) -> length(chain_slice) == 1 end)
+    |> Enum.map(fn(chain_slice) -> hd(chain_slice) end)
+  end
 end

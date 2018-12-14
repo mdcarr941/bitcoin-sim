@@ -1489,7 +1489,7 @@ defmodule Bitcoin.BtcNode do
       prev_out = hd(coinbase.tx_out)
 
       value = prev_out.value
-      payment = round(0.4 * value)
+      payment = round(0.6 * value)
       change = value - payment - @transaction_fee
       outputs = [{payment, pub_key}, {change, state.pub_key}]
 
@@ -1704,6 +1704,16 @@ defmodule Bitcoin.Network do
     end
   end
 
+  def get_pub_key(state, pid) do
+    node_state = Map.get(state.states, pid)
+    node_state.pub_key
+  end
+
+  def get_priv_key(state, pid) do
+    node_state = Map.get(state.sates, pid)
+    node_state.priv_key
+  end
+
   ## Server Functions
 
   @spec do_callbacks(NetworkState.t) :: NetworkState.t
@@ -1744,6 +1754,28 @@ defmodule Bitcoin.Network do
       |> BtcNode.submit_tx(tran)
     {:reply, response, state}
   end
+
+  # def handle_call({:get_signing_input, payload}, _from, state) do
+  #   amount = Map.get(payload, "amount")
+  #   pid_to = Map.get(payload, "pid_to")
+  #   pid_from = Map.get(payload, "pid_from")
+  #   pub_key_to = get_pub_key(pid_to)
+  #   pub_key_from = get_pub_key(pid_from)
+
+  #   node_state = Map.values(state.states) |> hd
+  #   pub_key_from_hash = Crypto.hash160(pub_key_from)
+  #   {{blk_hash, out_index}, prev_out} =
+  #     Enum.find(node_state.index, fn({_, prev_out}) ->
+  #       TxOut.pk_hash(prev_out) == pub_key_from_hash
+  #     end)
+
+  #   value = prev_out.value
+  #   change = value - amount - 50
+  #   outputs = [{amount, pub_key_to}, {change, pub_key_from}]
+
+  #   priv_key_from = get_priv_key(state, pid_from)
+  #   tran = Transaction.new_from_pub_keys(blk_hash, out_index, prev_out.pk_script, outputs, priv_key_from)
+  # end
 
   @spec handle_call({:unused_callback_tag}, GenServer.from, NetworkState.t) :: {:reply, atom, NetworkState.t}
   def handle_call({:unused_callback_tag}, from, state), do: {:reply, unused_callback_tag(state, from), state}
@@ -1857,6 +1889,8 @@ defmodule Bitcoin.Network do
 
   @spec stop_mining() :: :ok
   def stop_mining(), do: GenServer.cast(__MODULE__, {:stop_mining})
+
+  #def get_signing_input(payload), do: GenServer.call(__MODULE__, {:get_signing_input, payload})
 end
 
 defmodule Mix.Tasks.RunNetwork do
