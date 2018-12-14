@@ -85,11 +85,73 @@ stopBtn.addEventListener("click", event => {
   display.style.display = "none"
 })
 
-// Update the page when a message is received.
-
 channel.on("chain_lengths", payload => {
   minLengthDiv.innerText = payload.min
   maxLengthDiv.innerText = payload.max
+})
+
+const backgroundColor = "rgb(255, 126, 0, 0.5)"
+const boarderColor = "rgb(255, 126, 0, 0.5)"
+
+const nodeCashChart = new Chart(document.getElementById("node-cash-chart"), {
+  type: "radar",
+  data: {
+    labels: [],
+    datasets: [{
+      label: "Bitcoins",
+      data: [],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    // scales: {
+    //   xAxes: [{
+    //     scaleLabel: {
+    //       display: true,
+    //       labelString: "Node PID"
+    //     }
+    //   }],
+    //   yAxes: [{
+    //     ticks: {
+    //       beginAtZero: true
+    //     },
+    //     scaleLabel: {
+    //       display: true,
+    //       labelString: "BTC"
+    //     }
+    //   }]
+    // },
+    tooltips: false
+  }
+})
+
+const pidRgx = /<([\d\.]+)>/
+const totalBtcDiv = document.getElementById("total-btc-div")
+
+channel.on("node_cash", payload => {
+  let totalBtc = 0, btc = 0 
+  const labels = []
+  const data = []
+  for (let key in payload) {
+    if (payload.hasOwnProperty(key)) {
+      let match
+      if (match = pidRgx.exec(key)) {
+        labels.push(match[1])
+      } else {
+        labels.push("???")
+      }
+      btc = payload[key]/100000000
+      totalBtc += btc
+      data.push(btc)
+    }
+  }
+  nodeCashChart.data.labels = labels
+  nodeCashChart.data.datasets[0].data = data
+  nodeCashChart.data.datasets[0].backgroundColor = new Array(data.length).fill(backgroundColor)
+  nodeCashChart.data.datasets[0].boarderColor = new Array(data.length).fill(boarderColor)
+  nodeCashChart.update()
+
+  totalBtcDiv.innerText = totalBtc
 })
 
 channel.join()

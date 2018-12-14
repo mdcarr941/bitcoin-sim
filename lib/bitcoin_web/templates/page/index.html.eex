@@ -9,4 +9,7 @@
     <div id="min-length-div"></div>
     <label for="max-length-div">Max Chain Length:</label>
     <div id="max-length-div"></div>
+    <label for="total-btc-div">Total Btc:</label>
+    <div id="total-btc-div"></div>
+    <canvas width="100%" id="node-cash-chart"></canvas>
 </div>
