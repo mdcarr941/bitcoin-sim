@@ -251,6 +251,13 @@ defmodule Bitcoin.TxOut do
     ]
   end
 
+  @doc "Get the public key hash contained in `tx_out`."
+  @spec pk_hash(TxOut.t) :: Crypto.hash_t
+  def pk_hash(tx_out) do
+    {:OP_PUSHDATA, pk_hash} = Enum.at(tx_out.pk_script, 2)
+    pk_hash
+  end
+
   @spec pk_script_key(Crypto.pub_key_t) :: Script.t
   def pk_script_key(pub_key), do: pk_script(Crypto.hash160(pub_key))
 
@@ -301,6 +308,7 @@ defmodule Bitcoin.OutPoint do
   @spec to_key(Crypto.hash_t, non_neg_integer) :: key
   def to_key(hash, index), do: {hash, index}
 
+  @doc "Returns the key to BtcNodeState.index for this OutPoint."
   @spec to_key(OutPoint.t) :: key
   def to_key(out_point), do: to_key(out_point.hash, out_point.index)
 
@@ -311,6 +319,7 @@ defmodule Bitcoin.OutPoint do
 
   @spec to_pairs(OutPoint.t) :: Serialize.binary_pairs_t
   def to_pairs(out_point) do
+    # TODO: use Script helper functions
     [
       {:hash, out_point.hash},
       {:index, Serialize.to_little_end_unsigned(out_point.index, 4)}
@@ -344,6 +353,7 @@ defmodule Bitcoin.TxIn do
 
   @spec sig_script(binary, Crypto.pub_key_t) :: Script.t
   def sig_script(sig, pub_key) do
+    # TODO: these should use Script.op_pushdata
     [
       {:OP_PUSHDATA, sig},
       {:OP_PUSHDATA, pub_key}
@@ -1118,14 +1128,19 @@ defmodule Bitcoin.BtcNodeState do
   @genesis_block Block.genesis_block()
 
   @moduledoc "The state of a node in the BTC network."
-  defstruct peers: [], chain: [@genesis_block], index: %{}, current_block: nil, pub_key: nil, priv_key: nil,
+  defstruct peers: [], chain: [@genesis_block], index: %{}, cash_index: %{}, current_block: nil,
+    pub_key: nil, priv_key: nil,
     target: BlockHeader.to_target_threshold(BlockHeader.n_bits()), miner: nil, transaction_q: []
+
+  @type index_t :: %{OutPoint.key => TxOut.t}
+  @type cash_index_t :: %{Crypto.hash_t => non_neg_integer}
 
   @type t :: %BtcNodeState{
     peers: [pid], # The peers this node knows about.
     chain: [Block.t], # The block chain.
     # An index of unspent transaction outputs. The keys are {tx hash, output index}.
-    index: %{OutPoint.key => TxOut.t},
+    index: index_t,
+    cash_index: cash_index_t, # pk_hash => spendable satoshis
     current_block: Block.t | nil, # The block currently being mined.
     pub_key: Crypto.pub_key_t,
     priv_key: Crypto.priv_key_t,
@@ -1246,9 +1261,72 @@ defmodule Bitcoin.BtcNode do
     Map.update!(state, :index, fn(index) ->
       Enum.reduce(block.transactions, index, fn(tran, index) ->
         hash = Transaction.hash(tran)
-        Enum.reduce(0..length(tran.tx_out) - 1, index, fn(out_index, index) ->
+        # Add all outputs in this block to the index.
+        index = Enum.reduce(0..length(tran.tx_out) - 1, index, fn(out_index, index) ->
           Map.put(index, OutPoint.to_key(hash, out_index), Enum.at(tran.tx_out, out_index))
         end)
+        # Remove all inputs in this block from the index.
+        Map.drop(index, Enum.map(tran.tx_in, fn(tx_in) ->
+          prev_out = Map.get(tx_in, :prev_out)
+          if nil == prev_out do
+            nil
+          else
+            OutPoint.to_key(prev_out)
+          end
+        end))
+      end)
+    end)
+  end
+
+  @spec update_cash_index_tx_out(BtcNodeState.cash_index_t, TxOut.t, (number, number -> number)) :: BtcNodeState.cash_index_t
+  def update_cash_index_tx_out(cash_index, tx_out, updater) do
+    {_, cash_index} =
+      Map.get_and_update(cash_index, TxOut.pk_hash(tx_out), fn(cash) ->
+        cash =
+          if cash == nil do
+            0
+          else
+            cash
+          end
+        {cash, updater.(cash, tx_out.value)}
+      end)
+    cash_index
+  end
+
+  @spec update_cash_index_add(BtcNodeState.cash_index_t, TxOut.t) :: BtcNodeState.cash_index_t
+  def update_cash_index_add(cash_index, tx_out) do
+    update_cash_index_tx_out(cash_index, tx_out, fn(cash, value) -> cash + value end)
+  end
+
+  @spec update_cash_index_sub(BtcNodeState.cash_index_t, TxOut.t) :: BtcNodeState.cash_index_t
+  def update_cash_index_sub(cash_index, tx_out) do
+    update_cash_index_tx_out(cash_index, tx_out, fn(cash, value) -> cash - value end)
+  end
+
+  @doc "Update `cash_index` with `tran`. `index` MUST be up to date."
+  @spec update_cash_index_tran(BtcNodeState.cash_index_t, Transaction.t, BtcNodeState.index_t) :: BtcNodeState.cash_index_t
+  def update_cash_index_tran(cash_index, tran, index) do
+    # Add cash from outputs.
+    cash_index = Enum.reduce(tran.tx_out, cash_index, fn(tx_out, cash_index) ->
+      update_cash_index_add(cash_index, tx_out)
+    end)
+    # Subtract cash from inputs.
+    Enum.reduce(tran.tx_in, cash_index, fn(tx_in, cash_index) ->
+      prev_out = Map.get(tx_in, :prev_out)
+      if prev_out == nil do
+        cash_index
+      else
+        update_cash_index_sub(cash_index, index[OutPoint.to_key(prev_out)])
+      end
+    end)
+  end
+
+  @doc "Update `state.cash_index` with the transactions in `block`."
+  @spec update_cash_index(BtcNodeState.t, Block.t) :: BtcNodeState.t
+  def update_cash_index(state, block) do
+    Map.update!(state, :cash_index, fn(cash_index) ->
+      Enum.reduce(block.transactions, cash_index, fn(tran, cash_index) ->
+        update_cash_index_tran(cash_index, tran, state.index)
       end)
     end)
   end
@@ -1257,7 +1335,7 @@ defmodule Bitcoin.BtcNode do
   @spec update_queue(BtcNodeState.t, Block.t) :: BtcNodeState.t
   def update_queue(state, block) do
     # Any transaction with a hash in this list should be removed from the queue
-    # (since it is already in a block).
+    # (since it is already in this block).
     remove_list = Enum.map(block.transactions, fn(transaction) ->
       Transaction.hash(transaction)
     end)
@@ -1279,6 +1357,7 @@ defmodule Bitcoin.BtcNode do
     end)
     |> update_queue(block)
     |> update_index(block)
+    |> update_cash_index(block)
     |> interrupt_miner
     |> new_block
     |> start_miner
